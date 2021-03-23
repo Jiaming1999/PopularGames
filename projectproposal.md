@@ -78,3 +78,11 @@ I am very interested in both video game industry and software developing. I alwa
 |  Fetching data from API |  3  |  0: Didn't implement anything <br> +1 for each review fetch
 |  Unit Test |  5  |  +0.5 per unittest
 |  Manual Test |  5  |  +1 per test
+
+### Proposal Sketch
+![RecentGame](./Picture/RecentGame.jpg)
+![RecentTrend](./Picture/RecentTrend.jpg)
+![ClassicGame](./Picture/ClassicGame.jpg)
+![ClassicTrend](./Picture/ClassicTrend.jpg)
+![ListPage](./Picture/ListPage.jpg)
+![View](./Picture/View.jpg)
