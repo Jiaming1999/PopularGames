@@ -1,4 +1,4 @@
-# A Mobile App called Project
+# A Mobile App Game Information Project
 Jiaming Zhang (jz32) | Moderator: Bailey Tincher (tincher2)
 
 This is a mobile app about a project for CS242
