@@ -79,6 +79,9 @@ I am very interested in both video game industry and software developing. I alwa
 |  Unit Test |  5  |  +0.5 per unittest
 |  Manual Test |  5  |  +1 per test
 
+### grading cal link
+https://drive.google.com/drive/folders/1-8LsYMa5fiFyS9F-6twA2_CWbizgfMnz?usp=sharing
+
 ### Proposal Sketch
 ![RecentGame](./Picture/RecentGame.jpg)
 ![RecentTrend](./Picture/RecentTrend.jpg)
