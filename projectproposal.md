@@ -12,10 +12,11 @@ I am very interested in both video game industry and software developing. I alwa
 
 ## Technical Specification
 - Platform: Cross-platform app (React Native)
-- Programming Languages: JavaScript (Python for Flask should backend required)
-- Stylistic Conventions: Airbnb JavaScript Style Guide
+- Programming Languages: JavaScript /Python for Flask backend and scraping
+- Stylistic Conventions: Airbnb JavaScript Style Guide/PEP 8 guide
 - SDK: Facebook SDK for React Native
 - Databse: MongoDB
+- Server: AWS to deploy my REST API
 - IDE: Visual Studio Code
 - Tools/Interfaces: Mobile devices
 - Target Audience: Game developer/audience interested in game industry
@@ -46,16 +47,20 @@ I am very interested in both video game industry and software developing. I alwa
 |-----------|:---------:|-------------------------------------------------------------------------------|
 |  Scrapinging games information |  6  |  0: Didn't implement anything <br> 2: implemented top recent game basic function  <br> 3: implemented 1 & related review <br> 4: implemented 1 & 2 & all time game information <br> 6: implemented 1 & 2 & 3 & game related review(all)
 |  Connecting to Database |  5  |  0: Didn't implement anything <br> 2: implemented get from database <br> 4: implemented update database and insert database <br> 5: completed function
-|  Commandline interface |  4  |  0: Didn't implement anything <br> 1: display recent game <br> 2: display all time top game<br> 4: completed function d |
+|  Commandline interface |  2  |  0: Didn't implement anything <br> +0.5 per scraping section in game/review<br />
+|  Pylint Setup |  2  |  0: Didn't setup pylint <br> -1: Pylint 2 score away from 10<br />
 |  Unit Test |  5  |  +0.5 per unittest
 |  Manual Test |  5  |  +1 per test
 
 ### Week 2
 | Category  | Total Score Allocated | Detailed Rubrics                                                            |
 |-----------|:---------:|-------------------------------------------------------------------------------|
-| API |  8  |  0 points: Lacks any API<br /> GET<br />+0.5 pt for each of two routes that supports getting either a single recent top game or all time game<br />+0.5 pt for supporting getting either a single recent top game or all time game related view article<br />POST<br />+1 pt for each of four routes that supports adding new game(recent or all time)<br />+1 pt for corresponding review article <br />PUT +0.5 pt per route<br />DETELE: +0.5 pt per route<br />-0.5 pt for each wrong return types (200, 400, 415, 404) for each route<br />-0.5 pt for not reporting errors for each route<br />-0.5 pt for not returning valid JSON for each route, including static contents like HTML
-|  Filter |  7  |  0: Didn't implement anything <br> +0.5 per filter keyword supported
-|  Unit Test |  10  |  +0.5 per unittest
+| API |  6  |  0 points: Lacks any API<br /> GET<br />+0.5 pt for each of two routes that supports getting either a single recent top game or all time game<br />+0.5 pt for supporting getting either a single recent top game or all time game related view article<br />POST<br />+0.5 pt for each of four routes that supports adding a new game(recent or all time)<br />+0.5 pt for corresponding review article <br />PUT +0.5 pt per route<br />DETELE: +0.5 pt per route<br />-0.5 pt for each wrong return types (200, 400, 415, 404) for each route<br />-0.5 pt for not reporting errors for each route<br />-0.5 pt for not returning valid JSON for each route, including static contents like HTML
+|  API Deploy |  2  |  0: Didn't implement anything <br> 2: Deploy the API on AWS
+|  Filter |  5  |  0: Didn't implement anything <br> +0.5 per filter keyword supported
+|  Pylint Setup |  2  |  0: Didn't setup pylint <br> -1: Pylint 2 score away from 10<br />
+|  Unit Test |  6  |  +0.5 per unittest
+|  Spec docs |  4  |  -1 per route documentation missing, 0 for no docs at all
 
 
 ### Week 3
@@ -65,8 +70,9 @@ I am very interested in both video game industry and software developing. I alwa
 |  Model Interface |  4  |  +2 pt for each recent game/all time game parsing
 |  Filter |  2  |  0: Didn't implement anything <br> +1 pt for a keyword filtering
 |  Fetching data from API |  3  |  0: Didn't implement anything <br> +1 for each game/trend fetch
-|  Unit Test |  5  |  +0.5 per unittest
-|  Manual Test |  5  |  +1 per test
+|  Unit Test |  4  |  +0.5 pt per unittest
+|  Snapshot test |  4  |  +1 pt per screen test<br /> -1 pt: does not mock api call
+|  Navigation test |  2  | -1 pt: per screen with navigation test missing
 
 
 ### Week 4
@@ -76,8 +82,9 @@ I am very interested in both video game industry and software developing. I alwa
 |  Model Interface |  4  |  +2 pt for each recent game/all time game reviewe article parsing
 |  Filter |  2  |  0: Didn't implement anything <br> +1 pt for a keyword filtering update
 |  Fetching data from API |  3  |  0: Didn't implement anything <br> +1 for each review fetch
-|  Unit Test |  5  |  +0.5 per unittest
-|  Manual Test |  5  |  +1 per test
+|  Unit Test |  4  |  +0.5 pt per unittest
+|  Snapshot test |  4  |  +1 pt per screen test <br /> -1 pt: does not mock api call
+|  Navigation test |  2  | -1 pt: per screen with navigation test missing
 
 ### Proposal Sketch
 ![RecentGame](./Picture/RecentGame.jpg)
