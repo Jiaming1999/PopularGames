@@ -46,8 +46,9 @@ I am very interested in both video game industry and software developing. I alwa
 | Category  | Total Score Allocated | Detailed Rubrics                                                            |
 |-----------|:---------:|-------------------------------------------------------------------------------|
 |  Scrapinging games information |  6  |  0: Didn't implement anything <br> 2: implemented top recent game basic function  <br> 3: implemented 1 & related review <br> 4: implemented 1 & 2 & all time game information <br> 6: implemented 1 & 2 & 3 & game related review(all)
-|  Connecting to Database |  5  |  0: Didn't implement anything <br> 2: implemented get from database <br> 4: implemented update database and insert database <br> 5: completed function
-|  Commandline interface |  2  |  0: Didn't implement anything <br> +0.5 per scraping section in game/review<br />
+|  Connecting to Database |  3  |  0: Didn't implement anything <br> 2: implemented get from database <br> 3: completed function
+|  Simple Filter |  2  |  0: Didn't implement anything <br> 1: return recent most highly rated game information <br> 2: return all time most highly rated game information
+|  Commandline interface |  2  |  0: Didn't implement anything <br> 1: showing interaction with database<br /> 2: showing how filter works through the CLI<br />
 |  Pylint Setup |  2  |  0: Didn't setup pylint <br> -1: Pylint 2 score away from 10<br />
 |  Unit Test |  5  |  +0.5 per unittest
 |  Manual Test |  5  |  +1 per test
