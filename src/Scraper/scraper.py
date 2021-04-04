@@ -5,8 +5,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 from config import SCROLL_PAUSE_TIME, SCROLL_TIMES, GAMES_URL, IGN_URL, TOP_100_GAMES
+import db_helper
 import sys
 
+dbh = db_helper.DbHelper()
 
 """
 Global variable for recent popular
@@ -35,9 +37,9 @@ driver = webdriver.Chrome(ChromeDriverManager().install())
 
 def get_top_web():
     """
-        fetch the data from IGN game reviews of all time top100 games
-        :return:
-        """
+    fetch the data from IGN game reviews of all time top100 games
+    :return:
+    """
     try:
         driver.get(TOP_100_GAMES)
         last_height = driver.execute_script("return document.body.scrollHeight")
@@ -93,14 +95,15 @@ def scrape_top_game_list():
         top_games_name_list.append(title)
         url = article.div.a['href']
         if url == '' or "games" not in url:
-            tail = title.lower().replace(" ", "-").replace(":", "").replace("(", "").replace(")", "").replace("'", "").replace("é", "e")
+            tail = title.lower().replace(" ", "-").replace(":", "").replace("(", "").replace(")", "").replace("'",
+                                                                                                              "").replace(
+                "é", "e")
             if tail[-1] == '-':
                 tail = tail[:-1]
             url = 'https://www.ign.com/games/' + tail
         top_games_url_list.append(url)
         top_games_editor_list.append(article.p.span.text)
         top_games_review_list.append(article.p.text)
-    print(top_games_url_list)
     return
 
 
@@ -168,6 +171,7 @@ def scrape_popular_reviews():
     :return:
     """
     for url in popular_reviews_url_list:
+        print(url)
         review_article = scrape_review(url)
         popular_reviews_list.append(review_article)
     return
@@ -284,7 +288,6 @@ def scrape_popular_games():
         game_info = scrape_game(url, game_title, editor, review)
         popular_games_info_list.append(game_info)
         index += 1
-    print(popular_games_info_list)
     return popular_games_info_list
 
 
@@ -307,10 +310,23 @@ def run_scrape_top():
     scrape_top_games()
 
 
-run_scrape_top()
+def insert_popular():
+    """
+    Insert popular game data to database
+    :return:
+    """
+    run_scrape_popular()
+    for game in popular_games_info_list:
+        dbh.insert_popular_game(game)
 
 
-
-
+def insert_top():
+    """
+    Insert top game data to database
+    :return:
+    """
+    run_scrape_top()
+    for game in top_games_info_list:
+        dbh.insert_top_game(game)
 
 
