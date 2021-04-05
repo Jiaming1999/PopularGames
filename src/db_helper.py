@@ -1,6 +1,11 @@
+"""
+data base helper class
+"""
+import os
+import sys
 import pymongo
 from dotenv import load_dotenv
-import os
+
 
 load_dotenv()
 token = os.getenv("MONGODB_URL")
@@ -16,8 +21,13 @@ class DbHelper:
         """
         constructor for database handler
         """
-        self.client = pymongo.MongoClient(token)
-        self.db = self.client["ign_test"]
+        try:
+            self.client = pymongo.MongoClient(token)
+        except pymongo.errors.ConfigurationError:
+            print("there is an issue on network,"
+                  " connection failed to database", file=sys.stderr)
+            sys.exit()
+        self.db = self.client["ign"]
         self.collection = None
 
     def insert_popular_game(self, post):
@@ -40,7 +50,7 @@ class DbHelper:
 
     def delete_popular_game(self, post):
         """
-        delete a book from database
+        delete a popular game from database
         :param post:
         :return:
         """
@@ -49,7 +59,7 @@ class DbHelper:
 
     def delete_top_game(self, post):
         """
-        delete a author from database
+        delete a top game from database
         :param post:
         :return:
         """
@@ -58,8 +68,7 @@ class DbHelper:
 
     def fetch_popular_game(self):
         """
-        Tutorial from https://hevodata.com/learn/mongodb-export-to-json/#meth1
-        fetch the books from database
+        fetch the popular game from database
         :return: retrived exported MongoDB data from database
         """
         self.collection = self.db["popular"]
@@ -69,8 +78,7 @@ class DbHelper:
 
     def fetch_top_game(self):
         """
-        Tutorial from https://hevodata.com/learn/mongodb-export-to-json/#meth1
-        fetch the author from database
+        fetch the top game from database
         :return: retrived exported MongoDB data from database
         """
         self.collection = self.db["top100"]

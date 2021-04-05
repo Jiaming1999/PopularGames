@@ -1,4 +1,6 @@
-global SCROLL_PAUSE_TIME, SCROLL_TIME, GAMES_URL, IGN_URL, TOP_100_GAMES
+"""
+Global Var for src
+"""
 SCROLL_PAUSE_TIME = 0.5
 SCROLL_TIMES = 10
 GAMES_URL = "https://www.ign.com/reviews/games"

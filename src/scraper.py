@@ -1,12 +1,16 @@
+"""
+scraper class for scraping the ign website
+"""
 import time
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError
+import sys
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from urllib.request import Request, urlopen
-from urllib.error import HTTPError
-from config import SCROLL_TIMES, SCROLL_PAUSE_TIME, GAMES_URL, IGN_URL, TOP_100_GAMES
-import db_helper
-import sys
+from src.config import SCROLL_TIMES, SCROLL_PAUSE_TIME, GAMES_URL, IGN_URL, TOP_100_GAMES
+from src import db_helper
+
 
 dbh = db_helper.DbHelper()
 
@@ -30,17 +34,13 @@ top_games_review_list = []
 top_games_editor_list = []
 top_games_info_list = []
 
-"""
-driver set up
-"""
-driver = webdriver.Chrome(ChromeDriverManager().install())
-
 
 def get_top_web():
     """
     fetch the data from IGN game reviews of all time top100 games
     :return:
     """
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     try:
         driver.get(TOP_100_GAMES)
         last_height = driver.execute_script("return document.body.scrollHeight")
@@ -62,6 +62,8 @@ def get_popular_web():
     fetch the data from IGN game reviews popular page
     :return:
     """
+    print("scraping popular game web...")
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     try:
         driver.get(GAMES_URL)
         last_height = driver.execute_script("return document.body.scrollHeight")
@@ -85,27 +87,27 @@ def scrape_top_game_list():
     scrape top 100 games list
     :return:
     """
+    print("scraping top 100 games...")
     web_soup = get_top_web()
     try:
         articles = web_soup.find_all('article')
-    except TypeError:
+    except TypeError as no_find_article:
         print('fail to find articles', file=sys.stderr)
-        raise TypeError
+        raise TypeError from no_find_article
     for article in articles:
         title = article.div.a.text
         top_games_name_list.append(title)
         url = article.div.a['href']
         if url == '' or "games" not in url:
-            tail = title.lower().replace(" ", "-").replace(":", "").replace("(", "").replace(")", "").replace("'",
-                                                                                                              "").replace(
-                "é", "e")
+            tail = title.lower().replace(" ", "-").replace(":", "").\
+                replace("(", "").replace(")", "").\
+                replace("'", "").replace("é", "e")
             if tail[-1] == '-':
                 tail = tail[:-1]
             url = 'https://www.ign.com/games/' + tail
         top_games_url_list.append(url)
         top_games_editor_list.append(article.p.span.text)
         top_games_review_list.append(article.p.text)
-    return
 
 
 def scrape_popular_game_list():
@@ -116,20 +118,19 @@ def scrape_popular_game_list():
     web_soup = get_popular_web()
     try:
         sections = web_soup.find_all('div', class_='content-feed-grid-wrapper')
-    except TypeError:
+    except TypeError as no_found:
         print("content-feed-grid-wrapper no found", file=sys.stderr)
-        raise TypeError
+        raise TypeError from no_found
     for section in sections:
         try:
             main_content = section.find('section', class_='main-content')
             game_list = main_content.find_all('div', class_='content-item')
-        except TypeError:
+        except TypeError as no_list:
             print("game list no found", file=sys.stderr)
-            raise TypeError
+            raise TypeError from no_list
         for item in game_list:
             popular_games_name_list.append(item.a['aria-label'])
             popular_reviews_url_list.append(IGN_URL + item.a['href'])
-    return
 
 
 def scrape_review(url):
@@ -145,21 +146,21 @@ def scrape_review(url):
     review_soup = BeautifulSoup(response, 'lxml')
     try:
         title = review_soup.find('div', class_='article-object-link')
-    except TypeError:
+    except TypeError as no_title:
         print('cannot find title', file=sys.stderr)
-        raise TypeError
+        raise TypeError from no_title
     popular_games_url_list.append(IGN_URL + title.a['href'])
     try:
         author = review_soup.find('section', class_='author-names')
-    except TypeError:
+    except TypeError as no_author:
         print('cannot find author-page', file=sys.stderr)
-        raise TypeError
+        raise TypeError from no_author
     popular_reviews_author_list.append(author.a.text)
     try:
         section = review_soup.find('section', class_='article-page')
-    except TypeError:
+    except TypeError as no_article:
         print('cannot find article-page', file=sys.stderr)
-        raise TypeError
+        raise TypeError from no_article
     article_parts = section.find_all('p')
     for part in article_parts:
         review_article += part.text
@@ -172,10 +173,8 @@ def scrape_popular_reviews():
     :return:
     """
     for url in popular_reviews_url_list:
-        print(url)
         review_article = scrape_review(url)
         popular_reviews_list.append(review_article)
-    return
 
 
 def scrape_game(url, game_title, editor, review, rank=0):
@@ -209,15 +208,15 @@ def scrape_game(url, game_title, editor, review, rank=0):
     review_soup = BeautifulSoup(response, 'lxml')
     try:
         thumbnail = review_soup.find('div', class_='object-thumbnail')
-    except TypeError:
+    except TypeError as no_avatar:
         print('fail to get avatar', file=sys.stderr)
-        raise TypeError
+        raise TypeError from no_avatar
     avatar_url = thumbnail.span.img['src']
     try:
         score_wrapper = review_soup.find('span', class_='hexagon-content')
-    except TypeError:
+    except TypeError as no_score:
         print('fail to get score', file=sys.stderr)
-        raise TypeError
+        raise TypeError from no_score
     try:
         score = float(score_wrapper.text)
     except ValueError:
@@ -225,24 +224,24 @@ def scrape_game(url, game_title, editor, review, rank=0):
     try:
         all_more_meta = review_soup.find('div', class_='more-meta')
         more_metas = all_more_meta.find_all('div')
-    except TypeError:
+    except TypeError as no_more_meta:
         print('fail to get more meta', file=sys.stderr)
-        raise TypeError
+        raise TypeError from no_more_meta
     try:
-        genres = more_metas[-1].text.split(':')[1].split(',')
+        genres = more_metas[-1].text.split(':')[1].replace(" ", "").split(',')
     except AttributeError:
         genres = ['N/A']
     try:
         all_meta = review_soup.find('div', class_='meta')
         metas = all_meta.find_all('div')
-    except TypeError:
+    except TypeError as no_meta:
         print('fail to get meta', file=sys.stderr)
-        raise TypeError
-    platforms = metas[0].text.split(':')[1].split(',')
-    developers = metas[1].text.split(':')[1]
-    release_date = metas[-1].text.split(':')[1]
+        raise TypeError from no_meta
+    platforms = metas[0].text.split(':')[1].replace(" ", "").split(',')
+    developers = metas[1].text.replace(" ", "").split(':')[1]
+    release_date = metas[-1].text.replace(" ", "").split(':')[1]
     if rank == 0:
-        rank = 'N/A'
+        rank = 100 - score*10 + 1
     game_info = {
         "title": game_title,
         "thumbnail": avatar_url,
@@ -271,9 +270,7 @@ def scrape_top_games():
         rank = 100 - index
         game_info = scrape_game(url, game_title, editor, review, rank)
         top_games_info_list.append(game_info)
-        print(game_info)
         index += 1
-    return
 
 
 def scrape_popular_games():
@@ -316,6 +313,7 @@ def insert_popular():
     Insert popular game data to database
     :return:
     """
+    print("inserting popular games...")
     run_scrape_popular()
     for game in popular_games_info_list:
         dbh.insert_popular_game(game)
@@ -326,9 +324,7 @@ def insert_top():
     Insert top game data to database
     :return:
     """
+    print("inserting top 100 games")
     run_scrape_top()
     for game in top_games_info_list:
         dbh.insert_top_game(game)
-
-
-insert_top()
