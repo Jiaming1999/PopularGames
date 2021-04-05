@@ -4,11 +4,12 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
-from config import SCROLL_PAUSE_TIME, SCROLL_TIMES, GAMES_URL, IGN_URL, TOP_100_GAMES
+from config import SCROLL_TIMES, SCROLL_PAUSE_TIME, GAMES_URL, IGN_URL, TOP_100_GAMES
 import db_helper
 import sys
 
 dbh = db_helper.DbHelper()
+
 
 """
 Global variable for recent popular
@@ -228,7 +229,7 @@ def scrape_game(url, game_title, editor, review, rank=0):
         print('fail to get more meta', file=sys.stderr)
         raise TypeError
     try:
-        genres = more_metas[-1].text.split(',')
+        genres = more_metas[-1].text.split(':')[1].split(',')
     except AttributeError:
         genres = ['N/A']
     try:
@@ -237,9 +238,9 @@ def scrape_game(url, game_title, editor, review, rank=0):
     except TypeError:
         print('fail to get meta', file=sys.stderr)
         raise TypeError
-    platforms = metas[0].text.split(',')
-    developers = metas[1].text
-    release_date = metas[-1].text
+    platforms = metas[0].text.split(':')[1].split(',')
+    developers = metas[1].text.split(':')[1]
+    release_date = metas[-1].text.split(':')[1]
     if rank == 0:
         rank = 'N/A'
     game_info = {
@@ -330,3 +331,4 @@ def insert_top():
         dbh.insert_top_game(game)
 
 
+insert_top()
