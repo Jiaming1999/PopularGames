@@ -91,9 +91,9 @@ I am very interested in both video game industry and software developing. I alwa
 https://drive.google.com/drive/folders/1-8LsYMa5fiFyS9F-6twA2_CWbizgfMnz?usp=sharing
 
 ### Proposal Sketch
-![RecentGame](../Picture/RecentGame.jpg)
-![RecentTrend](../Picture/RecentTrend.jpg)
-![ClassicGame](../Picture/ClassicGame.jpg)
-![ClassicTrend](../Picture/ClassicTrend.jpg)
-![ListPage](../Picture/ListPage.jpg)
-![View](../Picture/View.jpg)
+![RecentGame](./Picture/RecentGame.jpg)
+![RecentTrend](./Picture/RecentTrend.jpg)
+![ClassicGame](./Picture/ClassicGame.jpg)
+![ClassicTrend](./Picture/ClassicTrend.jpg)
+![ListPage](./Picture/ListPage.jpg)
+![View](./Picture/View.jpg)
