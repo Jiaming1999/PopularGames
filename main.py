@@ -53,15 +53,23 @@ def start():
         else:
             print('please insert either popular or top', file=sys.stderr)
             sys.exit()
-        ret_docs = simple_filter.get_top_from(docs, args.top)
-        ret_docs = simple_filter.get_max_doc(ret_docs, args.max)
-        ret_docs = simple_filter.get_developer_doc(ret_docs, args.developer)
-        ret_docs = simple_filter.get_category_doc(ret_docs, args.category)
+        ret_docs = execute_filter(docs)
         file_name = 'jsonfile/' + args.get + '.json'
         with open(file_name, 'w') as file:
             write_docs = dumps(ret_docs, indent=2)
             file.write(write_docs)
         print('get successfully')
+
+
+def execute_filter(docs):
+    """
+    execute simple filters
+    """
+    ret_docs = simple_filter.get_top_from(docs, args.top)
+    ret_docs = simple_filter.get_max_doc(ret_docs, args.max)
+    ret_docs = simple_filter.get_developer_doc(ret_docs, args.developer)
+    ret_docs = simple_filter.get_category_doc(ret_docs, args.category)
+    return ret_docs
 
 
 if __name__ == '__main__':
