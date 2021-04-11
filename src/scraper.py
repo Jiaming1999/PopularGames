@@ -1,5 +1,5 @@
 """
-scraper class for scraping the ign website
+scraper file for scraping the ign website
 """
 import time
 from urllib.request import Request, urlopen
@@ -16,7 +16,7 @@ dbh = db_helper.DbHelper()
 
 
 """
-Global variable for recent popular
+list to store information for games scraping information
 """
 popular_reviews_url_list = []
 popular_games_name_list = []
@@ -25,9 +25,6 @@ popular_reviews_list = []
 popular_reviews_author_list = []
 popular_games_info_list = []
 
-"""
-Global variable for top 100 games
-"""
 top_games_url_list = []
 top_games_name_list = []
 top_games_review_list = []
@@ -117,11 +114,11 @@ def scrape_popular_game_list():
     """
     web_soup = get_popular_web()
     try:
-        sections = web_soup.find_all('div', class_='content-feed-grid-wrapper')
+        content_feed = web_soup.find_all('div', class_='content-feed-grid-wrapper')
     except TypeError as no_found:
         print("content-feed-grid-wrapper no found", file=sys.stderr)
         raise TypeError from no_found
-    for section in sections:
+    for section in content_feed:
         try:
             main_content = section.find('section', class_='main-content')
             game_list = main_content.find_all('div', class_='content-item')
@@ -144,24 +141,28 @@ def scrape_review(url):
     req = Request(insert_url, headers={'User-Agent': 'Mozilla/5.0'})
     response = urlopen(req, timeout=10).read()
     review_soup = BeautifulSoup(response, 'lxml')
+
     try:
         title = review_soup.find('div', class_='article-object-link')
     except TypeError as no_title:
         print('cannot find title', file=sys.stderr)
         raise TypeError from no_title
     popular_games_url_list.append(IGN_URL + title.a['href'])
+
     try:
         author = review_soup.find('section', class_='author-names')
     except TypeError as no_author:
         print('cannot find author-page', file=sys.stderr)
         raise TypeError from no_author
     popular_reviews_author_list.append(author.a.text)
+
     try:
         section = review_soup.find('section', class_='article-page')
     except TypeError as no_article:
         print('cannot find article-page', file=sys.stderr)
         raise TypeError from no_article
     article_parts = section.find_all('p')
+
     for part in article_parts:
         review_article += part.text
     return review_article
@@ -206,37 +207,44 @@ def scrape_game(url, game_title, editor, review, rank=0):
         }
         return game_info
     review_soup = BeautifulSoup(response, 'lxml')
+
     try:
         thumbnail = review_soup.find('div', class_='object-thumbnail')
     except TypeError as no_avatar:
         print('fail to get avatar', file=sys.stderr)
         raise TypeError from no_avatar
     avatar_url = thumbnail.span.img['src']
+
     try:
         score_wrapper = review_soup.find('span', class_='hexagon-content')
     except TypeError as no_score:
         print('fail to get score', file=sys.stderr)
         raise TypeError from no_score
+
     try:
         score = float(score_wrapper.text)
     except ValueError:
         score = 'N/A'
+
     try:
         all_more_meta = review_soup.find('div', class_='more-meta')
         more_metas = all_more_meta.find_all('div')
     except TypeError as no_more_meta:
         print('fail to get more meta', file=sys.stderr)
         raise TypeError from no_more_meta
+
     try:
         genres = more_metas[-1].text.split(':')[1].replace(" ", "").split(',')
     except AttributeError:
         genres = ['N/A']
+
     try:
         all_meta = review_soup.find('div', class_='meta')
         metas = all_meta.find_all('div')
     except TypeError as no_meta:
         print('fail to get meta', file=sys.stderr)
         raise TypeError from no_meta
+
     platforms = metas[0].text.split(':')[1].replace(" ", "").split(',')
     developers = metas[1].text.replace(" ", "").split(':')[1]
     release_date = metas[-1].text.replace(" ", "").split(':')[1]
