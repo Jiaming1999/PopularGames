@@ -7,6 +7,7 @@ import math
 def get_max_dict(game_dict):
     """
     helper function return the max value key from the dictionary
+    @return: max key in the dictionary
     """
     max_value = 0
     max_key = ''
@@ -20,6 +21,7 @@ def get_max_dict(game_dict):
 def get_min_dict(game_dict):
     """
     helper function return the max value key from the dictionary
+    @return: min key in the dictionary
     """
     min_value = math.inf
     min_key = ''
