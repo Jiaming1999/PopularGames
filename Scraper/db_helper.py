@@ -9,7 +9,7 @@ from bson.objectid import ObjectId
 
 
 load_dotenv()
-token = os.getenv("MONGODB_URL")
+token = os.getenv("MONGODB_URI")
 
 
 class DbHelper:
