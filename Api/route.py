@@ -52,7 +52,7 @@ def get_top_game_by_attr():
     try:
         info_limit = int(info_limit)
     except TypeError:
-        abort(404, "Bad Request: invalid limit")
+        abort(400, "Bad Request: invalid limit")
     return jsonify(ret_sanitized[:info_limit]), 201
 
 
@@ -100,7 +100,7 @@ def update_popular_game():
     if not game_id:
         abort(400, "Bad Request: Invalid id input")
     if not request.json:
-        abort(400, "Bad Request: Invalid json input")
+        abort(405, "Bad User Input: Invalid json input")
     data = request.get_json()
     response = execute_update_body(game_id, data, dbh, u_type='popular')
     return jsonify(response), 200
@@ -118,7 +118,7 @@ def update_top_game():
     if not game_id:
         abort(400, "Bad Request: Invalid id input")
     if not request.json:
-        abort(400, "Bad Request: Invalid json input")
+        abort(405, "Bad User Input: Invalid json input")
     data = request.get_json()
     response = execute_update_body(game_id, data, dbh, u_type='top')
     return jsonify(response), 200
