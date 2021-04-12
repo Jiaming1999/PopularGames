@@ -1,5 +1,6 @@
 .idea
 .DS_Store
+/.env
 /Scraper/popular.json
 /Scraper/top.json
 /top.json

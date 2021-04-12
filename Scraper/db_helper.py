@@ -9,8 +9,7 @@ from bson.objectid import ObjectId
 
 
 load_dotenv()
-#token = os.getenv("MONGODB_URL")
-token = "mongodb+srv://jmz:lUGTPjwUhDktexu3@cluster0.sg6rm.mongodb.net/webscraping_test?retryWrites=true&w=majority"
+token = os.getenv("MONGODB_URL")
 
 
 class DbHelper:
