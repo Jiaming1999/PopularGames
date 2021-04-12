@@ -8,8 +8,8 @@ import sys
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from src.config import SCROLL_TIMES, SCROLL_PAUSE_TIME, GAMES_URL, IGN_URL, TOP_100_GAMES
-from src import db_helper
+from Scraper.config import SCROLL_TIMES, SCROLL_PAUSE_TIME, GAMES_URL, IGN_URL, TOP_100_GAMES
+from Scraper import db_helper
 
 
 dbh = db_helper.DbHelper()
@@ -213,7 +213,7 @@ def scrape_game(url, game_title, editor, review, rank=0):
     except TypeError as no_avatar:
         print('fail to get avatar', file=sys.stderr)
         raise TypeError from no_avatar
-    avatar_url = thumbnail.span.img['src']
+    avatar_url = thumbnail.span.img['Scraper']
 
     try:
         score_wrapper = review_soup.find('span', class_='hexagon-content')

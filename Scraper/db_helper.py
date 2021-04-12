@@ -5,6 +5,7 @@ import os
 import sys
 import pymongo
 from dotenv import load_dotenv
+from bson.objectid import ObjectId
 
 
 load_dotenv()
@@ -85,3 +86,19 @@ class DbHelper:
         cursor = self.collection.find()
         docs = list(cursor)
         return docs
+
+    def update_one_popular_game(self, gid, target, value):
+        """
+        update one popular game
+        """
+        self.collection = self.db["popular"]
+        my_filter = {'_id': ObjectId(gid)}
+        return self.collection.update_one(my_filter, {"$set": {target: value}})
+
+    def update_one_top_game(self, gid, target, value):
+        """
+        update one top game
+        """
+        self.collection = self.db["top100"]
+        my_filter = {'_id': ObjectId(gid)}
+        return self.collection.update_one(my_filter, {"$set": {target: value}})

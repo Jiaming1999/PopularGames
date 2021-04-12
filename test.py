@@ -1,7 +1,7 @@
 import unittest
 
-from src import db_helper
-from src import simple_filter
+from Scraper import db_helper
+from Scraper import simple_filter
 
 
 class MyTestCase(unittest.TestCase):

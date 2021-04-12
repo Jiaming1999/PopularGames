@@ -4,9 +4,10 @@ The main function with command line interface to scrape and interact with databa
 import argparse
 import sys
 from bson.json_util import dumps
-from src import db_helper
-from src import scraper
-from src import simple_filter
+from Scraper import db_helper
+from Scraper import scraper
+from Scraper import simple_filter
+from Api import app
 
 
 dbh = db_helper.DbHelper()
@@ -73,4 +74,4 @@ def execute_filter(docs):
 
 
 if __name__ == '__main__':
-    start()
+    app.run(debug=True)

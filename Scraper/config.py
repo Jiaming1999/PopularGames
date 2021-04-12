@@ -1,5 +1,5 @@
 """
-Global Var for src
+Global Var for Scraper
 """
 SCROLL_PAUSE_TIME = 0.5
 SCROLL_TIMES = 10
