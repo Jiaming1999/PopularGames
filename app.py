@@ -2,7 +2,7 @@
 The main file for python directory api, start the flask here
 """
 import json
-from flask import Flask,jsonify, abort, request
+from flask import Flask, jsonify, abort, request
 from bson import json_util
 from Api import my_filter
 from Scraper import db_helper

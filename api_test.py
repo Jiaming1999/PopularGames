@@ -1,5 +1,5 @@
 import unittest
-from Api import app
+import app
 import json
 
 
