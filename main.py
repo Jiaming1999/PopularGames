@@ -7,7 +7,6 @@ from bson.json_util import dumps
 from Scraper import db_helper
 from Scraper import scraper
 from Scraper import simple_filter
-from Api import app
 
 
 dbh = db_helper.DbHelper()
@@ -74,4 +73,4 @@ def execute_filter(docs):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    start()

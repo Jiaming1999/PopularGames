@@ -6,3 +6,8 @@
 /top.json
 /popular.json
 /jsonfile/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
