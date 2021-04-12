@@ -213,7 +213,7 @@ def scrape_game(url, game_title, editor, review, rank=0):
     except TypeError as no_avatar:
         print('fail to get avatar', file=sys.stderr)
         raise TypeError from no_avatar
-    avatar_url = thumbnail.span.img['Scraper']
+    avatar_url = thumbnail.span.img['src']
 
     try:
         score_wrapper = review_soup.find('span', class_='hexagon-content')

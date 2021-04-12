@@ -28,7 +28,7 @@ class DbHelper:
             print("there is an issue on network,"
                   " connection failed to database", file=sys.stderr)
             sys.exit()
-        self.db = self.client["ign"]
+        self.db = self.client["ign_test"]
         self.collection = None
 
     def insert_popular_game(self, post):

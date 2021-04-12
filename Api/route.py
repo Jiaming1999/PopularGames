@@ -1,10 +1,11 @@
-from flask import Flask, jsonify, abort, request
-from Api import app
-from Scraper import db_helper
-from bson import json_util, ObjectId
-from Api import my_filter
+"""
+This is the file for all my api's route set up
+"""
 import json
-import sys
+from flask import jsonify, abort, request
+from bson import json_util
+from Api import app, my_filter
+from Scraper import db_helper
 
 
 @app.route('/')
@@ -16,51 +17,23 @@ def home():
     return jsonify("Home")
 
 
-def check_attr(key, value, c_type, docs):
-    """
-    check get attribute
-    @return the list satisfied attribute requirements
-    """
-    ret = []
-    if c_type == 'in':
-        for obj in docs:
-            if value in obj[key]:
-                ret.append(obj)
-    elif c_type == 'equal':
-        for obj in docs:
-            if value == obj[key]:
-                ret.append(obj)
-    return ret
-
-
-def execute_get_body(docs_game):
-    """
-    helper function that execute GET
-    """
-    title = request.args.get('title')
-    genre = request.args.get('genre')
-    score = request.args.get('score')
-    if title:
-        ret_game = check_attr('title', title, 'equal', docs_game)
-    elif genre:
-        ret_game = check_attr('genre', genre, 'in', docs_game)
-    elif score:
-        ret_game = check_attr('score', score, 'equal', docs_game)
-    else:
-        ret_game = docs_game
-    return ret_game
-
-
 @app.route('/popular', methods=['GET'])
 def get_popular_game_by_attr():
     """
     get popular game by attribute
     """
     dbh = db_helper.DbHelper()
+    info_limit = request.args.get("limit")
     docs_game = dbh.fetch_popular_game()
-    ret_game = execute_get_body(docs_game)
-    ret_sanitized = json.loads(json_util.dumps(ret_game))
-    return jsonify(ret_sanitized), 201
+    ret_sanitized = json.loads(json_util.dumps(docs_game))
+
+    if info_limit is None:
+        return jsonify(ret_sanitized), 201
+    try:
+        info_limit = int(info_limit)
+    except TypeError:
+        abort(404, "Bad Request: invalid limit")
+    return jsonify(ret_sanitized[:info_limit]), 201
 
 
 @app.route('/top100', methods=['GET'])
@@ -70,38 +43,45 @@ def get_top_game_by_attr():
     @return response
     """
     dbh = db_helper.DbHelper()
+    info_limit = request.args.get("limit")
     docs_game = dbh.fetch_top_game()
-    ret_game = execute_get_body(docs_game)
-    ret_sanitized = json.loads(json_util.dumps(ret_game))
-    return jsonify(ret_sanitized), 201
+    ret_sanitized = json.loads(json_util.dumps(docs_game))
+
+    if info_limit is None:
+        return jsonify(ret_sanitized), 201
+    try:
+        info_limit = int(info_limit)
+    except TypeError:
+        abort(404, "Bad Request: invalid limit")
+    return jsonify(ret_sanitized[:info_limit]), 201
 
 
-def execute_update_body(data, dbh, u_type):
+def execute_update_body(game_id, data, dbh, u_type):
     """
     helper function that execute update
     @return response after execution
     """
     if u_type == 'popular':
         if 'thumbnail' in data:
-            dbh.update_one_popular_game(id, 'thumbnail', data['thumbnail'])
+            dbh.update_one_popular_game(game_id, 'thumbnail', data['thumbnail'])
             response = 'Thumbnail Updated'
         elif 'score' in data:
-            dbh.update_one_popular_game(id, 'score', data['score'])
+            dbh.update_one_popular_game(game_id, 'score', data['score'])
             response = 'Score Updated'
         elif 'review' in data:
-            dbh.update_one_popular_game(id, 'review', data['review'])
+            dbh.update_one_popular_game(game_id, 'review', data['review'])
             response = 'Review Updated'
         else:
             response = 'Nothing Updated'
     elif u_type == 'top':
         if 'thumbnail' in data:
-            dbh.update_one_top_game(id, 'thumbnail', data['thumbnail'])
+            dbh.update_one_top_game(game_id, 'thumbnail', data['thumbnail'])
             response = 'Thumbnail Updated'
         elif 'score' in data:
-            dbh.update_one_top_game(id, 'score', data['score'])
+            dbh.update_one_top_game(game_id, 'score', data['score'])
             response = 'Score Updated'
         elif 'review' in data:
-            dbh.update_one_top_game(id, 'review', data['review'])
+            dbh.update_one_top_game(game_id, 'review', data['review'])
             response = 'Review Updated'
         else:
             response = 'Nothing Updated'
@@ -122,7 +102,7 @@ def update_popular_game():
     if not request.json:
         abort(400, "Bad Request: Invalid json input")
     data = request.get_json()
-    response = execute_update_body(data, dbh, u_type='popular')
+    response = execute_update_body(game_id, data, dbh, u_type='popular')
     return jsonify(response), 200
 
 
@@ -140,7 +120,7 @@ def update_top_game():
     if not request.json:
         abort(400, "Bad Request: Invalid json input")
     data = request.get_json()
-    response = execute_update_body(data, dbh, 'top')
+    response = execute_update_body(game_id, data, dbh, u_type='top')
     return jsonify(response), 200
 
 
@@ -158,7 +138,7 @@ def insert_popular_game():
     return jsonify({"Post Acknowledged": bool(res.acknowledged)}), 201
 
 
-@app.route('/popular', methods=['POST'])
+@app.route('/top100', methods=['POST'])
 def insert_top_game():
     """
     insert one top game
@@ -173,17 +153,17 @@ def insert_top_game():
 
 
 @app.route('/popular', methods=['DELETE'])
-def delete_popular_game_by_id():
+def delete_popular_game_by_title():
     """
     delete a popular game by game id
     @return whether the delete is successful
     """
     dbh = db_helper.DbHelper()
     docs_popular = dbh.fetch_popular_game()
-    game_id = request.args.get('id')
+    game_id = request.args.get('title')
     deleted_doc = None
     for obj in docs_popular:
-        if obj['_id'] == ObjectId(game_id):
+        if obj['title'] == game_id:
             deleted_doc = obj
     if deleted_doc is None:
         abort(400, "Bad Request: Invalid delete game")
@@ -192,17 +172,17 @@ def delete_popular_game_by_id():
 
 
 @app.route('/top100', methods=['DELETE'])
-def delete_top_game_by_id():
+def delete_top_game_by_title():
     """
     delete a top100 game by game id
     @return whether the delete is successful
     """
     dbh = db_helper.DbHelper()
     docs_top = dbh.fetch_top_game()
-    game_id = request.args.get('id')
+    game_id = request.args.get('title')
     deleted_doc = None
     for obj in docs_top:
-        if obj['_id'] == ObjectId(game_id):
+        if obj['title'] == game_id:
             deleted_doc = obj
     if deleted_doc is None:
         abort(404, "Not Found: Invalid delete game")
@@ -219,29 +199,8 @@ def filter_popular_game():
     dbh = db_helper.DbHelper()
     docs_game = dbh.fetch_popular_game()
     filter_type = request.args.get("type")
-
-    if filter_type is None:
-        abort(400, "Bad Request: please input filter type")
-    if filter_type == "mostgenre":
-        res = my_filter.get_most_genre(docs_game)
-        return jsonify({"Status": "success", "response": res}), 201
-    elif filter_type == 'mostplatform':
-        res = my_filter.get_most_platform(docs_game)
-        return jsonify({"Status": "success", "response": res}), 201
-    elif filter_type == 'mostdeveloper':
-        res = my_filter.get_most_productive_developer(docs_game)
-        return jsonify({"Status": "success", "response": res}), 201
-    elif filter_type == 'leastgenre':
-        res = my_filter.get_least_genre(docs_game)
-        return jsonify({"Status": "success", "response": res}), 201
-    elif filter_type == 'leastplatform':
-        res = my_filter.get_least_platform(docs_game)
-        return jsonify({"Status": "success", "response": res}), 201
-    elif filter_type == 'leastdeveloper':
-        res = my_filter.get_least_productive_developer(docs_game)
-        return jsonify({"Status": "success", "response": res}), 201
-    else:
-        abort(404, "Not Found: Invalid filter type")
+    ret = execute_filter_body(docs_game, filter_type)
+    return ret
 
 
 @app.route('/filter/top100', methods=['GET'])
@@ -253,30 +212,35 @@ def filter_top_game():
     dbh = db_helper.DbHelper()
     docs_game = dbh.fetch_top_game()
     filter_type = request.args.get("type")
+    ret = execute_filter_body(docs_game, filter_type)
+    return ret
 
+
+def execute_filter_body(docs_game, filter_type):
+    """
+    helper function execute filter contentg
+    return: result for filter
+    """
     if filter_type is None:
         abort(400, "Bad Request: please input filter type")
     if filter_type == "mostgenre":
         res = my_filter.get_most_genre(docs_game)
-        return jsonify({"Status": "success", "response": res}), 201
+        ret = jsonify({"Status": "success", "response": res}), 201
     elif filter_type == 'mostplatform':
         res = my_filter.get_most_platform(docs_game)
-        return jsonify({"Status": "success", "response": res}), 201
+        ret = jsonify({"Status": "success", "response": res}), 201
     elif filter_type == 'mostdeveloper':
         res = my_filter.get_most_productive_developer(docs_game)
-        return jsonify({"Status": "success", "response": res}), 201
+        ret = jsonify({"Status": "success", "response": res}), 201
     elif filter_type == 'leastgenre':
         res = my_filter.get_least_genre(docs_game)
-        return jsonify({"Status": "success", "response": res}), 201
+        ret = jsonify({"Status": "success", "response": res}), 201
     elif filter_type == 'leastplatform':
         res = my_filter.get_least_platform(docs_game)
-        return jsonify({"Status": "success", "response": res}), 201
+        ret = jsonify({"Status": "success", "response": res}), 201
     elif filter_type == 'leastdeveloper':
         res = my_filter.get_least_productive_developer(docs_game)
-        return jsonify({"Status": "success", "response": res}), 201
+        ret = jsonify({"Status": "success", "response": res}), 201
     else:
         abort(404, "Not Found: Invalid filter type")
-
-
-
-
+    return ret

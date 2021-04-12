@@ -134,4 +134,3 @@ def get_least_productive_developer(doc):
         else:
             game_dict[developer] = 1
     return get_min_dict(game_dict)
-
