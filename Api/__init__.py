@@ -1,3 +1,6 @@
+"""
+Api file main file
+"""
 from flask import Flask
 
 
