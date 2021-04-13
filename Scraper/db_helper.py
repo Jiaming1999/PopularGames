@@ -10,6 +10,8 @@ from bson.objectid import ObjectId
 
 load_dotenv()
 token = os.getenv("MONGODB_URI")
+if not token:
+    token = "mongodb://localhost:27020/ign_test"
 
 
 class DbHelper:
