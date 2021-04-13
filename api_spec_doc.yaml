@@ -7,7 +7,7 @@ info:
   title: "IGN TREND"
   contact:
     email: "mock@gmail.com"
-host: "localhost"
+host: "https://ign-trend.herokuapp.com/"
 basePath: "/"
 tags:
 - name: "popular"
