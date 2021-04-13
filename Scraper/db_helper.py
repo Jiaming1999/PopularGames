@@ -2,7 +2,6 @@
 data base helper class
 """
 import os
-import sys
 import pymongo
 from dotenv import load_dotenv
 from bson.objectid import ObjectId
@@ -25,10 +24,6 @@ class DbHelper:
         constructor for database handler
         """
         self.client = pymongo.MongoClient(token)
-        # except pymongo.errors.ConfigurationError:
-        #     print("there is an issue on network,"
-        #           " connection failed to database", file=sys.stderr)
-        #     sys.exit()
         self.db = self.client["ign_test"]
         self.collection = None
 
