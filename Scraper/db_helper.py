@@ -24,12 +24,11 @@ class DbHelper:
         """
         constructor for database handler
         """
-        try:
-            self.client = pymongo.MongoClient(token)
-        except pymongo.errors.ConfigurationError:
-            print("there is an issue on network,"
-                  " connection failed to database", file=sys.stderr)
-            sys.exit()
+        self.client = pymongo.MongoClient(token)
+        # except pymongo.errors.ConfigurationError:
+        #     print("there is an issue on network,"
+        #           " connection failed to database", file=sys.stderr)
+        #     sys.exit()
         self.db = self.client["ign_test"]
         self.collection = None
 
