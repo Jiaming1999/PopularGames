@@ -14,7 +14,7 @@ def home():
     default route for home page
     @return Home page
     """
-    return jsonify("Home")
+    return jsonify("IGN Trend API")
 
 
 @app.route('/popular', methods=['GET'])
