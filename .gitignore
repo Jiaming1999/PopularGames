@@ -6,7 +6,6 @@
 /top.json
 /popular.json
 /jsonfile/
-/popularGame/node_modules
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
