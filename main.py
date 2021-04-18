@@ -4,9 +4,9 @@ The main function with command line interface to scrape and interact with databa
 import argparse
 import sys
 from bson.json_util import dumps
-from src import db_helper
-from src import scraper
-from src import simple_filter
+from Scraper import db_helper
+from Scraper import scraper
+from Scraper import simple_filter
 
 
 dbh = db_helper.DbHelper()

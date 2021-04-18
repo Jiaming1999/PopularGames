@@ -2,13 +2,15 @@
 data base helper class
 """
 import os
-import sys
 import pymongo
 from dotenv import load_dotenv
+from bson.objectid import ObjectId
 
 
 load_dotenv()
-token = os.getenv("MONGODB_URL")
+token = os.getenv("MONGODB_URI")
+if not token:
+    token = "mongodb://localhost:27020/ign_test"
 
 
 class DbHelper:
@@ -21,13 +23,8 @@ class DbHelper:
         """
         constructor for database handler
         """
-        try:
-            self.client = pymongo.MongoClient(token)
-        except pymongo.errors.ConfigurationError:
-            print("there is an issue on network,"
-                  " connection failed to database", file=sys.stderr)
-            sys.exit()
-        self.db = self.client["ign"]
+        self.client = pymongo.MongoClient(token)
+        self.db = self.client["ign_test"]
         self.collection = None
 
     def insert_popular_game(self, post):
@@ -85,3 +82,25 @@ class DbHelper:
         cursor = self.collection.find()
         docs = list(cursor)
         return docs
+
+    def update_one_popular_game(self, gid, target, value):
+        """
+        update one popular game
+        :gid: game id need to be updated
+        :target: target field need to be updated
+        :value: updated value
+        """
+        self.collection = self.db["popular"]
+        my_filter = {'_id': ObjectId(gid)}
+        return self.collection.update_one(my_filter, {"$set": {target: value}})
+
+    def update_one_top_game(self, gid, target, value):
+        """
+        update one top game
+        :gid: game id need to be updated
+        :target: target field need to be updated
+        :value: updated value
+        """
+        self.collection = self.db["top100"]
+        my_filter = {'_id': ObjectId(gid)}
+        return self.collection.update_one(my_filter, {"$set": {target: value}})

@@ -1,8 +1,14 @@
 .idea
 .DS_Store
 /.env
-/src/popular.json
-/src/top.json
+/Scraper/popular.json
+/Scraper/top.json
 /top.json
 /popular.json
 /jsonfile/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+/popularGame/node_modules/

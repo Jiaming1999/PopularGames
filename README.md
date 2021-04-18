@@ -26,3 +26,25 @@ by ign editors. The popular games can reflect a trend towards nowadays game indu
 scrape from top 100 all time games from ign. These games' information stands for the best
 game made all time. With this information we can have an idea which genre or developer is most highly
 rated all the time.
+
+### Week2
+Building API on heroku
+
+#### GET
+Get games information by sending url to api, also supports filter to receive a
+conclusion about current trend of the game. Including the most favorable genre, developers and platform.
+
+Support for both popular and top100 collection
+
+#### POST 
+Insert a popular game or top100 game into database
+
+#### PUT
+Update a popular game or top100 game with provided id
+
+#### DELETE
+Delete a popular or top100 game by its title.
+
+More information about the api could be seen in api_spec_doc
+
+live api link: https://ign-trend.herokuapp.com/

@@ -1,0 +1,262 @@
+runtime: python38 # or another supported version
+
+instance_class: F2
+info:
+  description: "This is a IGN information api specifically about IGN's game reviews. You can have access to IGN's recent game reviews and games information on Top 100 games rated by IGN of all time."
+  version: "1.0.0"
+  title: "IGN TREND"
+  contact:
+    email: "mock@gmail.com"
+host: "https://ign-trend.herokuapp.com/"
+basePath: "/"
+tags:
+- name: "popular"
+  description: "Everything about recent trending games"
+- name: "top100"
+  description: "Access to top100 games of all time"
+schemes:
+- "http"
+- "https"
+paths:
+  /popular:
+    post:
+      tags:
+      - "popular"
+      summary: "Add a new popular game to the database"
+      description: ""
+      operationId: "addPopular"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Popular game object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/game"
+      responses:
+        "400":
+          description: "Invalid user input request"
+    delete:
+      tags:
+      - "popular"
+      summary: "Deletes a popular game"
+      description: ""
+      produces:
+       - "application/json"
+      parameters:
+      - name: "title"
+        description: "The game title you want to delete from database"
+        in: "header"
+        required: true
+        type: "string"
+      responses:
+        "404":
+          description: "game not found"
+    put:
+      tags:
+      - "popular"
+      summary: "Update an existing popular game"
+      description: ""
+      operationId: "updatePopular"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Popular game object that needs to be updated to the database"
+        required: true
+        schema:
+          $ref: "#/definitions/game"
+      responses:
+        "400":
+          description: "Invalid ID input"
+        "405":
+          description: "Invalid Json Input"
+    get:
+      tags:
+      - "popular"
+      summary: "Finds Games with limitation of n"
+      description: "find n games from the database and return their information"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "limit"
+        type: "integer"
+        in: "query"
+        description: "limit is how many games returned from database"
+        required: true
+      responses:
+        "201":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/game"
+        "400":
+          description: "Invalid limit"
+  /filter/popular:
+    get:
+      tags:
+      - "popular"
+      summary: "Finds Popular games trend by filter"
+      description: "return the most popular genre/platform/developers right now"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "tags"
+        in: "query"
+        description: "Tags to filter by"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              Status:
+                type: "string"
+              response:
+                type: "string"
+        "404":
+          description: "Invalid filter type"
+  /top100:
+    post:
+      tags:
+      - "top100"
+      summary: "Add a new top100 game to the database"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Top game object that needs to be added to the database"
+        required: true
+        schema:
+          $ref: "#/definitions/game"
+      responses:
+        "400":
+          description: "Invalid user input request"
+    delete:
+      tags:
+      - "top100"
+      summary: "Deletes a top100 game"
+      description: ""
+      produces:
+       - "application/json"
+      parameters:
+      - name: "title"
+        description: "The game title you want to delete from database"
+        in: "header"
+        required: true
+        type: "string"
+      responses:
+        "404":
+          description: "game not found"
+    put:
+      tags:
+      - "top100"
+      summary: "Update an existing top100 game"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Top game object that needs to be updated to the database"
+        required: true
+        schema:
+          $ref: "#/definitions/game"
+      responses:
+        "400":
+          description: "Invalid ID input"
+        "405":
+          description: "Invalid Json Input"
+    get:
+      tags:
+      - "top100"
+      summary: "Finds Games with limitation of n"
+      description: "find n games from the database and return their information"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "limit"
+        type: "integer"
+        in: "query"
+        description: "limit is how many games returned from database"
+        required: true
+      responses:
+        "201":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/game"
+        "400":
+          description: "Invalid limit"
+  /filter/top100:
+    get:
+      tags:
+      - "top100"
+      summary: "Finds Top games trend by filter"
+      description: "return the most popular genre/platform/developers from top100 games by ign"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "tags"
+        in: "query"
+        description: "Tags to filter by"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              Status:
+                type: "string"
+              response:
+                type: "string"
+        "404":
+          description: "Invalid filter type"
+   
+          
+definitions:
+  game:
+    type: "object"
+    properties:
+      title:
+        type: "string"
+      score:
+        type: "integer"
+      platforms:
+        type: "array"
+        items: {}
+      developers:
+        type: "string"
+      release:
+        type: "string"
+      editor:
+        type: "string"
+      review:
+        type: "string"
+      genres:
+        type: "array"
+        items: {}
+      rank:
+        type: "integer"

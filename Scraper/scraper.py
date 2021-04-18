@@ -8,8 +8,8 @@ import sys
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from src.config import SCROLL_TIMES, SCROLL_PAUSE_TIME, GAMES_URL, IGN_URL, TOP_100_GAMES
-from src import db_helper
+from Scraper.config import SCROLL_TIMES, SCROLL_PAUSE_TIME, GAMES_URL, IGN_URL, TOP_100_GAMES
+from Scraper import db_helper
 
 
 dbh = db_helper.DbHelper()
