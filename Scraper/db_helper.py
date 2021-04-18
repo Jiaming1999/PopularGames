@@ -86,6 +86,9 @@ class DbHelper:
     def update_one_popular_game(self, gid, target, value):
         """
         update one popular game
+        :gid: game id need to be updated
+        :target: target field need to be updated
+        :value: updated value
         """
         self.collection = self.db["popular"]
         my_filter = {'_id': ObjectId(gid)}
@@ -94,6 +97,9 @@ class DbHelper:
     def update_one_top_game(self, gid, target, value):
         """
         update one top game
+        :gid: game id need to be updated
+        :target: target field need to be updated
+        :value: updated value
         """
         self.collection = self.db["top100"]
         my_filter = {'_id': ObjectId(gid)}

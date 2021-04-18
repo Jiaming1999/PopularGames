@@ -225,22 +225,17 @@ def execute_filter_body(docs_game, filter_type):
         abort(400, "Bad Request: please input filter type")
     if filter_type == "mostgenre":
         res = my_filter.get_most_genre(docs_game)
-        ret = jsonify({"Status": "success", "response": res}), 201
     elif filter_type == 'mostplatform':
         res = my_filter.get_most_platform(docs_game)
-        ret = jsonify({"Status": "success", "response": res}), 201
     elif filter_type == 'mostdeveloper':
         res = my_filter.get_most_productive_developer(docs_game)
-        ret = jsonify({"Status": "success", "response": res}), 201
     elif filter_type == 'leastgenre':
         res = my_filter.get_least_genre(docs_game)
-        ret = jsonify({"Status": "success", "response": res}), 201
     elif filter_type == 'leastplatform':
         res = my_filter.get_least_platform(docs_game)
-        ret = jsonify({"Status": "success", "response": res}), 201
     elif filter_type == 'leastdeveloper':
         res = my_filter.get_least_productive_developer(docs_game)
-        ret = jsonify({"Status": "success", "response": res}), 201
     else:
         abort(404, "Not Found: Invalid filter type")
+    ret = jsonify({"Status": "success", "response": res}), 201
     return ret
