@@ -1,18 +1,9 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+// eslint-disable-next-line no-use-before-define
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-
-export default function TabTwoScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
-    </View>
-  );
-}
+import { View } from '../components/Themed';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,3 +21,9 @@ const styles = StyleSheet.create({
     width: '80%',
   },
 });
+
+export default function TabTwoScreen() {
+  return (
+    <View style={styles.container} />
+  );
+}

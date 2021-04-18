@@ -1,10 +1,11 @@
+/* eslint-disable react/jsx-filename-extension */
 /**
  * Learn more about createBottomTabNavigator:
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
 
-import { Ionicons } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
@@ -23,7 +24,8 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="TrendGame"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
+    >
       <BottomTab.Screen
         name="TrendGame"
         component={TabOneNavigator}
@@ -56,14 +58,14 @@ function TabOneNavigator() {
           headerTitle: 'Popular Games',
           title: 'populargames',
           headerTitleStyle: {
-            color: "white",
+            color: 'white',
             fontSize: 25,
-            fontWeight: "bold"
+            fontWeight: 'bold',
           },
           headerStyle: {
             backgroundColor: '#bf1313',
             height: 100,
-          }
+          },
         }}
       />
     </TabOneStack.Navigator>
@@ -81,14 +83,14 @@ function TabTwoNavigator() {
         options={{
           headerTitle: 'Popular Reviews',
           headerTitleStyle: {
-            color: "white",
+            color: 'white',
             fontSize: 25,
-            fontWeight: "bold"
+            fontWeight: 'bold',
           },
           headerStyle: {
             backgroundColor: '#bf1313',
             height: 100,
-          }
+          },
         }}
       />
     </TabTwoStack.Navigator>
