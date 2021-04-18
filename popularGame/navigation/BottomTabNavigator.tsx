@@ -4,14 +4,15 @@
  */
 
 import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import TabOneScreen from '../screens/PopularGameScreen';
+import TabTwoScreen from '../screens/PopularReviewScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -21,30 +22,24 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="TrendGame"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
+        name="TrendGame"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: () => <Ionicons name="game-controller" size={24} color="black" />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="TrendReview"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: () => <MaterialIcons name="rate-review" size={24} color="black" />,
         }}
       />
     </BottomTab.Navigator>
   );
-}
-
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
@@ -57,7 +52,19 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        options={{
+          headerTitle: 'Popular Games',
+          title: 'populargames',
+          headerTitleStyle: {
+            color: "white",
+            fontSize: 25,
+            fontWeight: "bold"
+          },
+          headerStyle: {
+            backgroundColor: '#bf1313',
+            height: 100,
+          }
+        }}
       />
     </TabOneStack.Navigator>
   );
@@ -71,7 +78,18 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        options={{
+          headerTitle: 'Popular Reviews',
+          headerTitleStyle: {
+            color: "white",
+            fontSize: 25,
+            fontWeight: "bold"
+          },
+          headerStyle: {
+            backgroundColor: '#bf1313',
+            height: 100,
+          }
+        }}
       />
     </TabTwoStack.Navigator>
   );
