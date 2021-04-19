@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
-import { Text, View } from '../../components/Themed.tsx';
+import { Text, View } from '../components/Themed.tsx';
 import PopularGameView from '../views/GameView';
 import { getPopularGame } from '../modal/GamesModal';
 
@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
  * Container Screen for popular Game list
  * @returns
  */
-const PopularGameScreen = () => {
+const PopularGameScreen = (props) => {
+  const { navigation } = props;
   const [data, setData] = useState();
   const [limit, setLimit] = useState(100);
   const [error, setError] = useState();
@@ -57,7 +58,7 @@ const PopularGameScreen = () => {
   return (
     <View style={styles.container}>
       <Text>
-        <PopularGameView data={data} setLimit={setLimit} />
+        <PopularGameView data={data} setLimit={setLimit} navigation={navigation} />
       </Text>
     </View>
   );

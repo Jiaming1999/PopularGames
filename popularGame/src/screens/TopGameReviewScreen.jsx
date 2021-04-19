@@ -23,12 +23,12 @@ const styles = StyleSheet.create({
  * to do week2 review screen for popular games
  * @returns
  */
-const PopularReviewScreen = () => (
+const TopReviewScreen = () => (
   <View style={styles.container}>
     <Text style={styles.title}>
-      Popular Reviwing
+      Top100 Reviwing
     </Text>
   </View>
 );
 
-export default PopularReviewScreen;
+export default TopReviewScreen;

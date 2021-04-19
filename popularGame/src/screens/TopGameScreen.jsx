@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
-import { View, Text } from '../../components/Themed.tsx';
+import { View, Text } from '../components/Themed.tsx';
 import { getPopularGame } from '../modal/GamesModal';
 import TopGameView from '../views/GameView';
 
@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
  * Container Screen for Top100 Game list
  * @returns
  */
-const TopGameScreen = () => {
+const TopGameScreen = (props) => {
+  const { navigation } = props;
   const [data, setData] = useState();
   const [limit, setLimit] = useState(100);
   const [error, setError] = useState();
@@ -57,7 +58,7 @@ const TopGameScreen = () => {
   return (
     <View style={styles.container}>
       <Text>
-        <TopGameView data={data} setLimit={setLimit} />
+        <TopGameView data={data} setLimit={setLimit} navigation={navigation} />
       </Text>
     </View>
   );

@@ -9,7 +9,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import LoadingView from './LoadingView';
 import { POPULAR_MAX } from '../../env/env';
 
-import { Text, View } from '../../components/Themed.tsx';
+import { Text, View } from '../components/Themed.tsx';
 
 const styles = StyleSheet.create({
   container: {
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
  * game: information for a single game from popular or top100 collection
  */
 const GameInfo = (props) => {
-  const { game } = props;
+  const { game, navigation } = props;
   return (
     <View style={styles.card}>
       <View style={styles.row}>
@@ -67,6 +67,7 @@ const GameInfo = (props) => {
           containerStyle={{ margin: 5, marginTop: 10 }}
           title={game.title}
           source={{ uri: game.thumbnail }}
+          onPress={() => navigation.navigate('Article', game)}
         />
         <View>
           <Text style={styles.title}>
@@ -123,7 +124,7 @@ GameInfo.propTypes = {
  * setLimit: the number of game displayed
  */
 const GameView = (props) => {
-  const { data, setLimit } = props;
+  const { data, setLimit, navigation } = props;
   const [value, setValue] = useState(POPULAR_MAX);
 
   if (!data) {
@@ -168,7 +169,7 @@ const GameView = (props) => {
       <Filter />
       <ScrollView>
         {data.length !== 0 ? data.map((game) => (
-          <GameInfo game={game} key={game.title} />
+          <GameInfo game={game} key={game.title} navigation={navigation} />
         )) : (
           <>
             <MaterialCommunityIcons style={styles.container} name="flask-empty-outline" size={24} color="black" />

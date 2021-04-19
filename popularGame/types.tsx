@@ -10,12 +10,14 @@ export type RootStackParamList = {
 
 export type BottomTabParamList = {
   TrendGame: undefined;
-  TrendReview: undefined;
+  TrendFilter: undefined;
   TopGame: undefined;
+  TopFilter: undefined;
 };
 
 export type TabOneParamList = {
   TabOneScreen: undefined;
+  Article: undefined;
 };
 
 export type TabTwoParamList = {
@@ -24,4 +26,10 @@ export type TabTwoParamList = {
 
 export type TabThreeParamList = {
   TabThreeScreen: undefined;
+  Article: undefined;
 };
+
+export type TabFourParamList = {
+  TabFourScreen: undefined;
+};
+

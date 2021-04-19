@@ -4,7 +4,7 @@
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
 
-import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { Ionicons, Feather, FontAwesome5 } from '@expo/vector-icons';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,12 +12,14 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../src/screens/PopularGameScreen';
-import TabTwoScreen from '../src/screens/PopularReviewScreen';
-import TabThreeScreen from '../src/screens/TopGameScreen';
+import TabOneScreen from '../screens/PopularGameScreen';
+import TabTwoScreen from '../screens/PopularReviewScreen';
+import TabThreeScreen from '../screens/TopGameScreen';
+import TabFourScreen from '../screens/TopGameReviewScreen';
+import ReviewPage from '../views/ReviewView';
 import {
-  BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList,
-} from '../types';
+  BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList, TabFourParamList
+} from '../../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -37,10 +39,10 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="TrendReview"
+        name="TrendFilter"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: () => <MaterialIcons name="rate-review" size={24} color="black" />,
+          tabBarIcon: () => <FontAwesome5 name="hotjar" size={24} color="black" />,
         }}
       />
       <BottomTab.Screen
@@ -48,6 +50,13 @@ export default function BottomTabNavigator() {
         component={TabThreeNavigator}
         options={{
           tabBarIcon: () => <Ionicons name="md-trophy-sharp" size={24} color="black" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="TopFilter"
+        component={TabFourNavigator}
+        options={{
+          tabBarIcon: () => <Feather name="trending-up" size={24} color="black" />,
         }}
       />
     </BottomTab.Navigator>
@@ -67,6 +76,24 @@ function TabOneNavigator() {
         options={{
           headerTitle: 'Popular Games',
           title: 'populargames',
+          headerTitleStyle: {
+            color: 'white',
+            fontSize: 25,
+            fontWeight: 'bold',
+          },
+          headerStyle: {
+            backgroundColor: '#bf1313',
+            height: 100,
+          },
+        }}
+      />
+      <TabOneStack.Screen
+        name='Article'
+        component={ReviewPage}
+        options={{
+          headerTitle: 'Article',
+          title: 'articles',
+          headerTintColor: 'white',
           headerTitleStyle: {
             color: 'white',
             fontSize: 25,
@@ -128,6 +155,49 @@ function TabThreeNavigator() {
           },
         }}
       />
+      <TabThreeStack.Screen
+        name='Article'
+        component={ReviewPage}
+        options={{
+          headerTitle: 'Article',
+          title: 'articles',
+          headerTintColor: 'white',
+          headerTitleStyle: {
+            color: 'white',
+            fontSize: 25,
+            fontWeight: 'bold',
+          },
+          headerStyle: {
+            backgroundColor: '#bf1313',
+            height: 100,
+          },
+        }}
+      />
     </TabThreeStack.Navigator>
+  );
+}
+
+const TabFourStack = createStackNavigator<TabFourParamList>();
+
+function TabFourNavigator() {
+  return (
+    <TabFourStack.Navigator>
+      <TabFourStack.Screen
+        name="TabFourScreen"
+        component={TabFourScreen}
+        options={{
+          headerTitle: 'Top100 Games',
+          headerTitleStyle: {
+            color: 'white',
+            fontSize: 25,
+            fontWeight: 'bold',
+          },
+          headerStyle: {
+            backgroundColor: '#bf1313',
+            height: 100,
+          },
+        }}
+      />
+    </TabFourStack.Navigator>
   );
 }
