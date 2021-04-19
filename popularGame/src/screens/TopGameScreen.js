@@ -59,7 +59,11 @@ const TopGameScreen = (props) => {
   return (
     <View style={styles.container}>
       <Text>
-        <TopGameView data={data} setLimit={setLimit} navigation={navigation} />
+        <TopGameView
+          data={data}
+          setLimit={setLimit}
+          navigation={navigation}
+        />
       </Text>
     </View>
   );

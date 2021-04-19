@@ -59,7 +59,11 @@ const PopularGameScreen = (props) => {
   return (
     <View style={styles.container}>
       <Text>
-        <PopularGameView data={data} setLimit={setLimit} navigation={navigation} />
+        <PopularGameView
+          data={data}
+          setLimit={setLimit}
+          navigation={navigation}
+        />
       </Text>
     </View>
   );
