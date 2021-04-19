@@ -37,6 +37,11 @@ const styles = StyleSheet.create({
   },
 });
 
+/**
+ * Review article for the game
+ * @param {data} props
+ * @returns
+ */
 export const ReviewContent = (props) => {
   const { data } = props;
   return (
