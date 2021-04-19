@@ -1,13 +1,12 @@
 /* eslint-disable import/prefer-default-export */
-import { BASE_URL } from '../env/env';
+import { BASE_URL } from '../../env/env';
 
 /**
  * fetching profile data from backend api
- * return interface used for other files
- *
+ * return data used for other files/
  */
-export const getPopularGame = async (limit = 100) => {
-  const url = `${BASE_URL}popular?limit=${limit}`;
+export const getPopularGame = async (limit = 100, type) => {
+  const url = `${BASE_URL}${type}?limit=${limit}`;
 
   try {
     const response = await fetch(

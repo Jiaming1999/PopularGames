@@ -1,12 +1,17 @@
+// eslint-disable-next-line no-use-before-define
 import * as React from 'react';
 
 import {
   Placeholder,
   PlaceholderMedia,
   PlaceholderLine,
-  Fade
-} from "rn-placeholder";
+  Fade,
+} from 'rn-placeholder';
 
+/**
+ * Loading View for all data loading action
+ * @returns
+ */
 const LoadingView = () => (
   <Placeholder
     Animation={Fade}

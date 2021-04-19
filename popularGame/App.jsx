@@ -1,13 +1,11 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 // eslint-disable-next-line no-use-before-define
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
+import useCachedResources from './hooks/useCachedResources.ts';
+import useColorScheme from './hooks/useColorScheme.ts';
+import Navigation from './navigation/index.tsx';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();

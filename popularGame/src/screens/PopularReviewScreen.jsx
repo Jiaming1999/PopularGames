@@ -1,9 +1,7 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
-// eslint-disable-next-line no-use-before-define
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
-import { View } from '../components/Themed';
+import { View } from '../../components/Themed.tsx';
+import PopularGameReviewView from '../views/PopularGameReviewView';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,8 +20,14 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function TabTwoScreen() {
-  return (
-    <View style={styles.container} />
-  );
-}
+/**
+ * to do week2 review screen for popular games
+ * @returns
+ */
+const PopularReviewScreen = () => (
+  <View style={styles.container}>
+    <PopularGameReviewView />
+  </View>
+);
+
+export default PopularReviewScreen;

@@ -1,6 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-// eslint-disable-next-line no-use-before-define
 import * as React from 'react';
 import { useState } from 'react';
 import {
@@ -8,14 +5,15 @@ import {
 } from 'react-native';
 import { Avatar } from 'react-native-elements';
 import { PropTypes } from 'prop-types';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import LoadingView from './LoadingView';
-import { POPULAR_MAX } from '../env/env.js';
+import { POPULAR_MAX } from '../../env/env';
 
-import { Text, View } from '../components/Themed';
+import { Text, View } from '../../components/Themed.tsx';
 
 const styles = StyleSheet.create({
   container: {
-
+    alignItems: 'center',
   },
   title: {
     paddingTop: 10,
@@ -43,13 +41,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   input: {
+    width: '70%',
     margin: 15,
     height: 40,
     borderColor: '#eee',
     borderWidth: 1,
   },
+  btn: {
+    alignSelf: 'center',
+    marginRight: 15,
+  },
 });
 
+/**
+ * Card component for displaying game information
+ * game: information for a single game from popular or top100 collection
+ */
 const GameInfo = (props) => {
   const { game } = props;
   return (
@@ -105,16 +112,17 @@ GameInfo.propTypes = {
     editor: PropTypes.string.isRequired,
     release: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
-    developers: PropTypes.shape([
-      PropTypes.string,
-    ]),
-    platforms: PropTypes.shape([
-      PropTypes.string,
-    ]),
+    developers: PropTypes.arrayOf(PropTypes.string),
+    platforms: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
 
-const PopularGameView = (props) => {
+/**
+ * Componet rendering a tab page of game information list
+ * data: list of game information
+ * setLimit: the number of game displayed
+ */
+const GameView = (props) => {
   const { data, setLimit } = props;
   const [value, setValue] = useState(POPULAR_MAX);
 
@@ -124,37 +132,61 @@ const PopularGameView = (props) => {
     );
   }
 
+  const Filter = () => (
+    <>
+      <View style={styles.row}>
+        <TextInput
+          style={styles.input}
+          placeholder="limit"
+          value={value}
+          onChangeText={(text) => {
+            setValue(text);
+          }}
+        />
+        <View style={styles.btn}>
+          <Button
+            style={styles.btn}
+            title="submit"
+            color="#bf1313"
+            onPress={() => {
+              let tempValue;
+              if (value > 100 || value < 0 || !value) {
+                tempValue = 100;
+              } else {
+                tempValue = value;
+              }
+              setLimit(tempValue);
+            }}
+          />
+        </View>
+      </View>
+    </>
+  );
+
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="limit"
-        value={value}
-        onChangeText={(text) => {
-          setValue(text);
-        }}
-      />
-      <Button
-        title="submit"
-        color="#bf1313"
-        onPress={() => {
-          setLimit(value);
-        }}
-      />
+      <Filter />
       <ScrollView>
-        {data.map((game) => (
+        {data.length !== 0 ? data.map((game) => (
           <GameInfo game={game} key={game.title} />
-        ))}
+        )) : (
+          <>
+            <MaterialCommunityIcons style={styles.container} name="flask-empty-outline" size={24} color="black" />
+            <Text style={styles.title}>No Data</Text>
+          </>
+        )}
       </ScrollView>
     </View>
   );
 };
 
-PopularGameView.propTypes = {
-  data: PropTypes.shape([
-    PropTypes.object,
-  ]).isRequired,
+GameView.defaultProps = {
+  data: undefined,
+};
+
+GameView.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
   setLimit: PropTypes.func.isRequired,
 };
 
-export default PopularGameView;
+export default GameView;

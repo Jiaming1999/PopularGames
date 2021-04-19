@@ -12,9 +12,12 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/PopularGameScreen';
-import TabTwoScreen from '../screens/PopularReviewScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import TabOneScreen from '../src/screens/PopularGameScreen';
+import TabTwoScreen from '../src/screens/PopularReviewScreen';
+import TabThreeScreen from '../src/screens/TopGameScreen';
+import {
+  BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList,
+} from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -38,6 +41,13 @@ export default function BottomTabNavigator() {
         component={TabTwoNavigator}
         options={{
           tabBarIcon: () => <MaterialIcons name="rate-review" size={24} color="black" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="TopGame"
+        component={TabThreeNavigator}
+        options={{
+          tabBarIcon: () => <Ionicons name="md-trophy-sharp" size={24} color="black" />,
         }}
       />
     </BottomTab.Navigator>
@@ -94,5 +104,30 @@ function TabTwoNavigator() {
         }}
       />
     </TabTwoStack.Navigator>
+  );
+}
+
+const TabThreeStack = createStackNavigator<TabThreeParamList>();
+
+function TabThreeNavigator() {
+  return (
+    <TabThreeStack.Navigator>
+      <TabThreeStack.Screen
+        name="TabThreeScreen"
+        component={TabThreeScreen}
+        options={{
+          headerTitle: 'Top100 Games',
+          headerTitleStyle: {
+            color: 'white',
+            fontSize: 25,
+            fontWeight: 'bold',
+          },
+          headerStyle: {
+            backgroundColor: '#bf1313',
+            height: 100,
+          },
+        }}
+      />
+    </TabThreeStack.Navigator>
   );
 }

@@ -1,12 +1,9 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-// eslint-disable-next-line no-use-before-define
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
-import { Text, View } from '../components/Themed';
-import PopularGameView from '../views/PopularGameView';
-import { getPopularGame } from '../modal/PopularGamesModal';
+import { Text, View } from '../../components/Themed.tsx';
+import PopularGameView from '../views/GameView';
+import { getPopularGame } from '../modal/GamesModal';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,21 +22,37 @@ const styles = StyleSheet.create({
   },
 });
 
+/**
+ * Container Screen for popular Game list
+ * @returns
+ */
 const PopularGameScreen = () => {
   const [data, setData] = useState();
   const [limit, setLimit] = useState(100);
+  const [error, setError] = useState();
+
   async function fetchData() {
     try {
-      const tempData = await getPopularGame(limit);
+      const tempData = await getPopularGame(limit, 'popular');
       setData(tempData);
     } catch (e) {
-      throw new Error(e);
+      setError(e);
     }
   }
 
   useEffect(() => {
     fetchData();
   }, [limit]);
+
+  if (error) {
+    return (
+      <View style={styles.container}>
+        <Text>
+          {error}
+        </Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>

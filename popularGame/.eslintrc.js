@@ -7,7 +7,17 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
   ],
-  parser: '@typescript-eslint/parser',
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      plugins: ['@typescript-eslint'],
+      rules: {
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': ['error'],
+      },
+    },
+  ],
+  // parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -17,7 +27,6 @@ module.exports = {
   },
   plugins: [
     'react',
-    '@typescript-eslint',
   ],
   rules: {
   },
