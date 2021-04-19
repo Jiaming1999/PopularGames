@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import * as React from 'react';
 import { useState } from 'react';
 import {
@@ -65,7 +66,7 @@ const GameInfo = (props) => {
         <Avatar
           size="large"
           containerStyle={{ margin: 5, marginTop: 10 }}
-          title={game.title}
+          title="game"
           source={{ uri: game.thumbnail }}
           onPress={() => navigation.navigate('Article', game)}
         />
@@ -83,6 +84,11 @@ const GameInfo = (props) => {
           <Text style={styles.text}>
             {
               `By ${game.editor}`
+            }
+          </Text>
+          <Text style={styles.text}>
+            {
+              `${game.genres}`
             }
           </Text>
           <Text style={styles.text}>
@@ -113,9 +119,37 @@ GameInfo.propTypes = {
     editor: PropTypes.string.isRequired,
     release: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
-    developers: PropTypes.arrayOf(PropTypes.string),
+    developers: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string),
     platforms: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
+};
+
+/**
+ * display component for game list
+ * @param {Filter box} Filter
+ * @param {*} data
+ * @param {*} navigation
+ * @returns
+ */
+export const GameList = (props) => {
+  const { data, navigation } = props;
+  return (
+    <ScrollView>
+      {data.length !== 0 ? data.map((game) => (
+        <GameInfo game={game} key={game.title} navigation={navigation} />
+      )) : (
+        <>
+          <MaterialCommunityIcons style={styles.container} name="flask-empty-outline" size={24} color="black" />
+          <Text style={styles.title}>No Data</Text>
+        </>
+      )}
+    </ScrollView>
+  );
+};
+
+GameList.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 /**
@@ -167,16 +201,7 @@ const GameView = (props) => {
   return (
     <View style={styles.container}>
       <Filter />
-      <ScrollView>
-        {data.length !== 0 ? data.map((game) => (
-          <GameInfo game={game} key={game.title} navigation={navigation} />
-        )) : (
-          <>
-            <MaterialCommunityIcons style={styles.container} name="flask-empty-outline" size={24} color="black" />
-            <Text style={styles.title}>No Data</Text>
-          </>
-        )}
-      </ScrollView>
+      <GameList data={data} navigation={navigation} />
     </View>
   );
 };

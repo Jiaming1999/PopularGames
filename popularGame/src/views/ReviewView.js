@@ -1,6 +1,8 @@
+/* eslint-disable react/jsx-filename-extension */
 import * as React from 'react';
 import { StyleSheet, Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { PropTypes } from 'prop-types';
 import { View, Text } from '../components/Themed.tsx';
 
 const styles = StyleSheet.create({
@@ -35,30 +37,47 @@ const styles = StyleSheet.create({
   },
 });
 
+export const ReviewContent = (props) => {
+  const { data } = props;
+  return (
+    <ScrollView>
+      <Image
+        style={styles.image}
+        source={{
+          uri: data.thumbnail,
+        }}
+      />
+      <Text style={styles.title}>
+        {data.title}
+      </Text>
+      <Text style={styles.subtitle}>
+        {`By ${data.editor}`}
+      </Text>
+      <Text style={styles.text}>
+        {data.review}
+      </Text>
+    </ScrollView>
+  );
+};
+
+ReviewContent.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+    editor: PropTypes.string.isRequired,
+    review: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
 /**
  * Component display correpsond game's review article
  */
 const ReviewView = (props) => {
   const { route } = props;
+  const data = route.params;
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <Image
-          style={styles.image}
-          source={{
-            uri: route.params.thumbnail,
-          }}
-        />
-        <Text style={styles.title}>
-          {route.params.title}
-        </Text>
-        <Text style={styles.subtitle}>
-          {`By ${route.params.editor}`}
-        </Text>
-        <Text style={styles.text}>
-          {route.params.review}
-        </Text>
-      </ScrollView>
+      <ReviewContent data={data} />
     </View>
   );
 };

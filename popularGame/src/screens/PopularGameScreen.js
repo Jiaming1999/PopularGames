@@ -1,9 +1,10 @@
+/* eslint-disable react/jsx-filename-extension */
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed.tsx';
 import PopularGameView from '../views/GameView';
-import { getPopularGame } from '../modal/GamesModal';
+import { getGame } from '../modal/GamesModal';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,7 +35,7 @@ const PopularGameScreen = (props) => {
 
   async function fetchData() {
     try {
-      const tempData = await getPopularGame(limit, 'popular');
+      const tempData = await getGame(limit, 'popular');
       setData(tempData);
     } catch (e) {
       setError(e);

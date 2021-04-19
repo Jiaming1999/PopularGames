@@ -67,7 +67,7 @@ export default function BottomTabNavigator() {
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 const TabOneStack = createStackNavigator<TabOneParamList>();
 
-function TabOneNavigator() {
+export function TabOneNavigator() {
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
