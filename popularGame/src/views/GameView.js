@@ -2,11 +2,12 @@
 import * as React from 'react';
 import { useState } from 'react';
 import {
-  StyleSheet, ScrollView, TextInput, Button,
+  StyleSheet, ScrollView, TextInput, Button, TouchableOpacity, Image,
 } from 'react-native';
-import { Avatar } from 'react-native-elements';
 import { PropTypes } from 'prop-types';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import {
+  MaterialCommunityIcons, EvilIcons, MaterialIcons, AntDesign,
+} from '@expo/vector-icons';
 import LoadingView from './LoadingView';
 import { POPULAR_MAX } from '../../env/env';
 import { MAX_GAMES, MIN_GAMES } from '../constants/Numbers';
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
   },
   title: {
     paddingTop: 10,
-    fontSize: 12,
+    fontSize: 18,
     fontWeight: 'bold',
   },
   separator: {
@@ -36,10 +37,11 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   text: {
-    fontSize: 12,
+    fontSize: 15,
   },
   row: {
     flexDirection: 'row',
+    padding: 5,
   },
   input: {
     width: '70%',
@@ -52,6 +54,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginRight: 15,
   },
+  image: {
+    width: '90%',
+    height: 200,
+  },
 });
 
 /**
@@ -60,55 +66,67 @@ const styles = StyleSheet.create({
  */
 const GameInfo = (props) => {
   const { game, navigation } = props;
-  return (
-    <View style={styles.card}>
+
+  const Score = () => {
+    const items = [];
+    const num = game.score === 'N/A' ? 0 : Math.ceil(game.score);
+    for (let i = 0; i < num; i += 1) {
+      items.push(<EvilIcons name="star" size={20} color="black" />);
+    }
+    return (
       <View style={styles.row}>
-        <Avatar
-          size="large"
-          containerStyle={{ margin: 5, marginTop: 10 }}
-          title="game"
-          source={{ uri: game.thumbnail }}
-          onPress={() => navigation.navigate('Article', game)}
-        />
-        <View>
-          <Text style={styles.title}>
-            {
-              game.title
-            }
-          </Text>
-          <Text style={styles.text}>
-            {
-              `Rated Score:${game.score}`
-            }
-          </Text>
-          <Text style={styles.text}>
-            {
-              `By ${game.editor}`
-            }
-          </Text>
-          <Text style={styles.text}>
-            {
-              `${game.genres}`
-            }
-          </Text>
-          <Text style={styles.text}>
-            {
-              `On ${game.platforms}`
-            }
-          </Text>
-          <Text style={styles.text}>
-            {
-              `From ${game.developers}`
-            }
-          </Text>
-          <Text style={styles.text}>
-            {
-              game.release
-            }
-          </Text>
-        </View>
+        {items}
       </View>
-    </View>
+    );
+  };
+
+  return (
+    <TouchableOpacity
+      title="gamecard"
+      style={styles.card}
+      onPress={() => navigation.navigate('Article', game)}
+    >
+      <Image
+        style={styles.image}
+        source={{
+          uri: game.thumbnail,
+        }}
+      />
+      <View>
+        <Text style={styles.title}>
+          {
+            game.title
+          }
+        </Text>
+        <Text style={styles.text}>
+          <Score />
+        </Text>
+        <Text style={styles.text}>
+          <MaterialCommunityIcons name="typewriter" size={24} color="black" />
+          {
+            `Edited By ${game.editor}`
+          }
+        </Text>
+        <Text style={styles.text}>
+          <MaterialIcons name="category" size={24} color="black" />
+          {
+            `${game.genres}`
+          }
+        </Text>
+        <Text style={styles.text}>
+          <MaterialIcons name="gamepad" size={24} color="black" />
+          {
+            `On ${game.platforms}`
+          }
+        </Text>
+        <Text style={styles.text}>
+          <AntDesign name="calendar" size={24} color="black" />
+          {
+            game.release
+          }
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
