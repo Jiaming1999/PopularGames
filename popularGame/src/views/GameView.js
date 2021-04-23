@@ -9,7 +9,7 @@ import { PropTypes } from 'prop-types';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import LoadingView from './LoadingView';
 import { POPULAR_MAX } from '../../env/env';
-
+import { MAX_GAMES, MIN_GAMES } from '../constants/Numbers';
 import { Text, View } from '../components/Themed.tsx';
 
 const styles = StyleSheet.create({
@@ -185,8 +185,8 @@ const GameView = (props) => {
             color="#bf1313"
             onPress={() => {
               let tempValue;
-              if (value > 100 || value < 0 || !value) {
-                tempValue = 100;
+              if (value > MAX_GAMES || value < MIN_GAMES || !value) {
+                tempValue = MAX_GAMES;
               } else {
                 tempValue = value;
               }

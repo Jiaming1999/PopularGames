@@ -1,5 +1,7 @@
 import api from '../src/util/api';
-import { POPULAR_DATA, TOP_DATA } from '../mockData';
+import {
+  POPULAR_DATA, TOP_DATA, COMPARE_POPULAR_DATA, COMPARE_TOP_DATA,
+} from '../mockData';
 import { parseGames } from '../src/modal/GamesModal';
 
 beforeEach(() => {
@@ -20,18 +22,7 @@ test('returns result for mock popular game', () => {
     .finally(() => {
       expect(onResponse).toHaveBeenCalled();
       expect(onError).not.toHaveBeenCalled();
-      expect(onResponse.mock.calls[0][0][0]).toEqual({
-        title: 'Mock game title',
-        thumbnail: 'www.google.com',
-        score: 10,
-        platfroms: ['PC'],
-        developers: 'Nintendo',
-        genres: ['FPS'],
-        editor: 'jmz',
-        release: 'Feb1,2011',
-        review: 'good game',
-        rank: 1,
-      });
+      expect(onResponse.mock.calls[0][0][0]).toEqual(COMPARE_POPULAR_DATA);
     });
 });
 
@@ -49,18 +40,7 @@ test('returns result for mock top100 game', () => {
     .finally(() => {
       expect(onResponse).toHaveBeenCalled();
       expect(onError).not.toHaveBeenCalled();
-      expect(onResponse.mock.calls[0][0][0]).toEqual({
-        title: 'Mock game title',
-        thumbnail: 'www.google.com',
-        score: 6,
-        platfroms: ['XBOX', 'PS4'],
-        developers: 'Capcom',
-        genres: ['Action'],
-        editor: 'jmz',
-        release: 'Feb1,2011',
-        review: 'bad game',
-        rank: 91,
-      });
+      expect(onResponse.mock.calls[0][0][0]).toEqual(COMPARE_TOP_DATA);
     });
 });
 
@@ -125,17 +105,6 @@ test('empty profile parsing', () => {
 test('ordinary parsing top data', () => {
   const data = parseGames([TOP_DATA]);
   expect(data).toEqual([
-    {
-      title: 'Mock game title',
-      thumbnail: 'www.google.com',
-      score: 6,
-      platfroms: ['XBOX', 'PS4'],
-      developers: 'Capcom',
-      genres: ['Action'],
-      editor: 'jmz',
-      release: 'Feb1,2011',
-      review: 'bad game',
-      rank: 91,
-    },
+    COMPARE_TOP_DATA,
   ]);
 });
