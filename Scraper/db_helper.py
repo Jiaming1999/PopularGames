@@ -24,7 +24,7 @@ class DbHelper:
         constructor for database handler
         """
         self.client = pymongo.MongoClient(token)
-        self.db = self.client["ign_test"]
+        self.db = self.client["ign"]
         self.collection = None
 
     def insert_popular_game(self, post):

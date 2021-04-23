@@ -15,6 +15,13 @@ Python with pymongo and urllib to web scrape.
 
 selenium to emulate the browser work
 
+Flask to host the api server
+
+Api server pushed to herokuapp
+
+React Native with Javascript for mobile app
+
+
 ### Week 1 
 Scraping data from ign.com
 
@@ -48,3 +55,21 @@ Delete a popular or top100 game by its title.
 More information about the api could be seen in api_spec_doc
 
 live api link: https://ign-trend.herokuapp.com/
+
+### Week3
+Building Mobile App Interface
+
+This week is the implementation of interface for game information from both top100 games and popular games trend.
+
+#### Popular Game:
+From games collected in popular collection.
+Display title, editor, score, release date, platform, genre.
+Navigate to review article is possible
+
+#### Top100 Game:
+From games collected in top100 collection.
+Display title, editor, score, release date, platform, genre.
+Navigate to review article is possible
+
+#### Review:
+The page display one game detailed review article.
