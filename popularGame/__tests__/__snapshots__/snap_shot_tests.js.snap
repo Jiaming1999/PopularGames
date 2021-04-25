@@ -164,315 +164,164 @@ exports[`returns result for mock popular game 1`] = `
 <RCTScrollView>
   <View>
     <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
-            "backgroundColor": "#fff",
-          },
-          Object {
-            "borderColor": "#eee",
-            "borderRadius": 10,
-            "borderWidth": 1,
-            "flexShrink": 1,
-            "margin": 5,
-            "padding": 5,
-            "width": "98%",
-          },
-        ]
+        Object {
+          "borderColor": "#eee",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexShrink": 1,
+          "margin": 5,
+          "opacity": 1,
+          "padding": 5,
+          "width": "98%",
+        }
       }
     >
+      <Image
+        source={
+          Object {
+            "uri": "www.google.com",
+          }
+        }
+        style={
+          Object {
+            "height": 200,
+            "width": "90%",
+          }
+        }
+      />
       <View
         style={
           Array [
             Object {
               "backgroundColor": "#fff",
             },
-            Object {
-              "flexDirection": "row",
-            },
+            undefined,
           ]
         }
       >
-        <View
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "backgroundColor": "transparent",
-              "height": 75,
-              "margin": 5,
-              "marginTop": 10,
-              "opacity": 1,
-              "width": 75,
-            }
-          }
-        >
-          <View
-            accessibilityIgnoresInvertColors={true}
-            style={
-              Object {
-                "backgroundColor": "transparent",
-                "flex": 1,
-                "overflow": "hidden",
-                "position": "relative",
-              }
-            }
-          >
-            <Image
-              onLoad={[Function]}
-              source={
-                Object {
-                  "uri": "www.google.com",
-                }
-              }
-              style={
-                Object {
-                  "bottom": 0,
-                  "flex": 1,
-                  "height": undefined,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                  "width": undefined,
-                }
-              }
-              testID="RNE__Image"
-              theme={
-                Object {
-                  "colors": Object {
-                    "black": "#242424",
-                    "disabled": "hsl(208, 8%, 90%)",
-                    "divider": "#bcbbc1",
-                    "error": "#ff190c",
-                    "grey0": "#393e42",
-                    "grey1": "#43484d",
-                    "grey2": "#5e6977",
-                    "grey3": "#86939e",
-                    "grey4": "#bdc6cf",
-                    "grey5": "#e1e8ee",
-                    "greyOutline": "#bbb",
-                    "platform": Object {
-                      "android": Object {
-                        "error": "#f44336",
-                        "grey": "rgba(0, 0, 0, 0.54)",
-                        "primary": "#2196f3",
-                        "searchBg": "#dcdce1",
-                        "secondary": "#9C27B0",
-                        "success": "#4caf50",
-                        "warning": "#ffeb3b",
-                      },
-                      "default": Object {
-                        "error": "#ff3b30",
-                        "grey": "#7d7d7d",
-                        "primary": "#007aff",
-                        "searchBg": "#dcdce1",
-                        "secondary": "#5856d6",
-                        "success": "#4cd964",
-                        "warning": "#ffcc00",
-                      },
-                      "ios": Object {
-                        "error": "#ff3b30",
-                        "grey": "#7d7d7d",
-                        "primary": "#007aff",
-                        "searchBg": "#dcdce1",
-                        "secondary": "#5856d6",
-                        "success": "#4cd964",
-                        "warning": "#ffcc00",
-                      },
-                      "web": Object {
-                        "error": "#ff190c",
-                        "grey": "#393e42",
-                        "primary": "#2089dc",
-                        "searchBg": "#303337",
-                        "secondary": "#ca71eb",
-                        "success": "#52c41a",
-                        "warning": "#faad14",
-                      },
-                    },
-                    "primary": "#2089dc",
-                    "searchBg": "#303337",
-                    "secondary": "#ca71eb",
-                    "success": "#52c41a",
-                    "warning": "#faad14",
-                    "white": "#ffffff",
-                  },
-                }
-              }
-              transition={true}
-              transitionDuration={360}
-            />
-            <View
-              accessibilityElementsHidden={true}
-              importantForAccessibility="no-hide-descendants"
-              pointerEvents="none"
-              style={
-                Object {
-                  "bottom": 0,
-                  "left": 0,
-                  "opacity": 1,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#bdbdbd",
-                    "flex": 1,
-                    "height": undefined,
-                    "justifyContent": "center",
-                    "width": undefined,
-                  }
-                }
-                testID="RNE__Image__placeholder"
-              >
-                <Text
-                  style={
-                    Object {
-                      "backgroundColor": "transparent",
-                      "color": "#ffffff",
-                      "fontSize": 37.5,
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  game
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                Object {
-                  "flex": 1,
-                  "height": undefined,
-                  "width": undefined,
-                }
-              }
-            />
-          </View>
-        </View>
-        <View
+        <Text
           style={
             Array [
               Object {
-                "backgroundColor": "#fff",
+                "color": "#000",
               },
-              undefined,
+              Object {
+                "fontSize": 18,
+                "fontWeight": "bold",
+                "paddingTop": 10,
+              },
             ]
           }
         >
-          <Text
+          Mock game title
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <View
             style={
               Array [
                 Object {
-                  "color": "#000",
+                  "backgroundColor": "#fff",
                 },
                 Object {
-                  "fontSize": 12,
-                  "fontWeight": "bold",
-                  "paddingTop": 10,
+                  "flexDirection": "row",
+                  "padding": 5,
                 },
               ]
             }
           >
-            Mock game title
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#000",
-                },
-                Object {
-                  "fontSize": 12,
-                },
-              ]
-            }
-          >
-            Rated Score:10
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#000",
-                },
-                Object {
-                  "fontSize": 12,
-                },
-              ]
-            }
-          >
-            By jmz
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#000",
-                },
-                Object {
-                  "fontSize": 12,
-                },
-              ]
-            }
-          >
-            FPS
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#000",
-                },
-                Object {
-                  "fontSize": 12,
-                },
-              ]
-            }
-          >
-            On undefined
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#000",
-                },
-                Object {
-                  "fontSize": 12,
-                },
-              ]
-            }
-          >
-            From Nintendo
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#000",
-                },
-                Object {
-                  "fontSize": 12,
-                },
-              ]
-            }
-          >
-            Feb1,2011
-          </Text>
-        </View>
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+          </View>
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <Text />
+          Edited By jmz
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <Text />
+          FPS
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <Text />
+          On undefined
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <Text />
+          Feb1,2011
+        </Text>
       </View>
     </View>
   </View>
@@ -483,315 +332,350 @@ exports[`returns result for mock top100 game 1`] = `
 <RCTScrollView>
   <View>
     <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
-            "backgroundColor": "#fff",
-          },
-          Object {
-            "borderColor": "#eee",
-            "borderRadius": 10,
-            "borderWidth": 1,
-            "flexShrink": 1,
-            "margin": 5,
-            "padding": 5,
-            "width": "98%",
-          },
-        ]
+        Object {
+          "borderColor": "#eee",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexShrink": 1,
+          "margin": 5,
+          "opacity": 1,
+          "padding": 5,
+          "width": "98%",
+        }
       }
     >
+      <Image
+        source={
+          Object {
+            "uri": "www.google.com",
+          }
+        }
+        style={
+          Object {
+            "height": 200,
+            "width": "90%",
+          }
+        }
+      />
       <View
         style={
           Array [
             Object {
               "backgroundColor": "#fff",
             },
-            Object {
-              "flexDirection": "row",
-            },
+            undefined,
           ]
         }
       >
-        <View
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "backgroundColor": "transparent",
-              "height": 75,
-              "margin": 5,
-              "marginTop": 10,
-              "opacity": 1,
-              "width": 75,
-            }
-          }
-        >
-          <View
-            accessibilityIgnoresInvertColors={true}
-            style={
-              Object {
-                "backgroundColor": "transparent",
-                "flex": 1,
-                "overflow": "hidden",
-                "position": "relative",
-              }
-            }
-          >
-            <Image
-              onLoad={[Function]}
-              source={
-                Object {
-                  "uri": "www.google.com",
-                }
-              }
-              style={
-                Object {
-                  "bottom": 0,
-                  "flex": 1,
-                  "height": undefined,
-                  "left": 0,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                  "width": undefined,
-                }
-              }
-              testID="RNE__Image"
-              theme={
-                Object {
-                  "colors": Object {
-                    "black": "#242424",
-                    "disabled": "hsl(208, 8%, 90%)",
-                    "divider": "#bcbbc1",
-                    "error": "#ff190c",
-                    "grey0": "#393e42",
-                    "grey1": "#43484d",
-                    "grey2": "#5e6977",
-                    "grey3": "#86939e",
-                    "grey4": "#bdc6cf",
-                    "grey5": "#e1e8ee",
-                    "greyOutline": "#bbb",
-                    "platform": Object {
-                      "android": Object {
-                        "error": "#f44336",
-                        "grey": "rgba(0, 0, 0, 0.54)",
-                        "primary": "#2196f3",
-                        "searchBg": "#dcdce1",
-                        "secondary": "#9C27B0",
-                        "success": "#4caf50",
-                        "warning": "#ffeb3b",
-                      },
-                      "default": Object {
-                        "error": "#ff3b30",
-                        "grey": "#7d7d7d",
-                        "primary": "#007aff",
-                        "searchBg": "#dcdce1",
-                        "secondary": "#5856d6",
-                        "success": "#4cd964",
-                        "warning": "#ffcc00",
-                      },
-                      "ios": Object {
-                        "error": "#ff3b30",
-                        "grey": "#7d7d7d",
-                        "primary": "#007aff",
-                        "searchBg": "#dcdce1",
-                        "secondary": "#5856d6",
-                        "success": "#4cd964",
-                        "warning": "#ffcc00",
-                      },
-                      "web": Object {
-                        "error": "#ff190c",
-                        "grey": "#393e42",
-                        "primary": "#2089dc",
-                        "searchBg": "#303337",
-                        "secondary": "#ca71eb",
-                        "success": "#52c41a",
-                        "warning": "#faad14",
-                      },
-                    },
-                    "primary": "#2089dc",
-                    "searchBg": "#303337",
-                    "secondary": "#ca71eb",
-                    "success": "#52c41a",
-                    "warning": "#faad14",
-                    "white": "#ffffff",
-                  },
-                }
-              }
-              transition={true}
-              transitionDuration={360}
-            />
-            <View
-              accessibilityElementsHidden={true}
-              importantForAccessibility="no-hide-descendants"
-              pointerEvents="none"
-              style={
-                Object {
-                  "bottom": 0,
-                  "left": 0,
-                  "opacity": 1,
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                }
-              }
-            >
-              <View
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#bdbdbd",
-                    "flex": 1,
-                    "height": undefined,
-                    "justifyContent": "center",
-                    "width": undefined,
-                  }
-                }
-                testID="RNE__Image__placeholder"
-              >
-                <Text
-                  style={
-                    Object {
-                      "backgroundColor": "transparent",
-                      "color": "#ffffff",
-                      "fontSize": 37.5,
-                      "textAlign": "center",
-                    }
-                  }
-                >
-                  game
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                Object {
-                  "flex": 1,
-                  "height": undefined,
-                  "width": undefined,
-                }
-              }
-            />
-          </View>
-        </View>
-        <View
+        <Text
           style={
             Array [
               Object {
-                "backgroundColor": "#fff",
+                "color": "#000",
               },
-              undefined,
+              Object {
+                "fontSize": 18,
+                "fontWeight": "bold",
+                "paddingTop": 10,
+              },
+            ]
+          }
+        >
+          Mock game title
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#fff",
+                },
+                Object {
+                  "flexDirection": "row",
+                  "padding": 5,
+                },
+              ]
+            }
+          >
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 20,
+                  },
+                  undefined,
+                  Object {
+                    "fontFamily": "evilicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 20,
+                  },
+                  undefined,
+                  Object {
+                    "fontFamily": "evilicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 20,
+                  },
+                  undefined,
+                  Object {
+                    "fontFamily": "evilicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 20,
+                  },
+                  undefined,
+                  Object {
+                    "fontFamily": "evilicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 20,
+                  },
+                  undefined,
+                  Object {
+                    "fontFamily": "evilicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 20,
+                  },
+                  undefined,
+                  Object {
+                    "fontFamily": "evilicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+          </View>
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
             ]
           }
         >
           <Text
+            allowFontScaling={false}
             style={
               Array [
                 Object {
-                  "color": "#000",
+                  "color": "black",
+                  "fontSize": 24,
                 },
+                undefined,
                 Object {
-                  "fontSize": 12,
-                  "fontWeight": "bold",
-                  "paddingTop": 10,
+                  "fontFamily": "material-community",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
                 },
+                Object {},
               ]
             }
           >
-            Mock game title
+            󰼭
           </Text>
+          Edited By jmz
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
           <Text
+            allowFontScaling={false}
             style={
               Array [
                 Object {
-                  "color": "#000",
+                  "color": "black",
+                  "fontSize": 24,
                 },
+                undefined,
                 Object {
-                  "fontSize": 12,
+                  "fontFamily": "material",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
                 },
+                Object {},
               ]
             }
           >
-            Rated Score:6
+            
           </Text>
+          Action
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
           <Text
+            allowFontScaling={false}
             style={
               Array [
                 Object {
-                  "color": "#000",
+                  "color": "black",
+                  "fontSize": 24,
                 },
+                undefined,
                 Object {
-                  "fontSize": 12,
+                  "fontFamily": "material",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
                 },
+                Object {},
               ]
             }
           >
-            By jmz
+            
           </Text>
+          On undefined
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
           <Text
+            allowFontScaling={false}
             style={
               Array [
                 Object {
-                  "color": "#000",
+                  "color": "black",
+                  "fontSize": 24,
                 },
+                undefined,
                 Object {
-                  "fontSize": 12,
+                  "fontFamily": "anticon",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
                 },
+                Object {},
               ]
             }
           >
-            Action
+            
           </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#000",
-                },
-                Object {
-                  "fontSize": 12,
-                },
-              ]
-            }
-          >
-            On undefined
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#000",
-                },
-                Object {
-                  "fontSize": 12,
-                },
-              ]
-            }
-          >
-            From Capcom
-          </Text>
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#000",
-                },
-                Object {
-                  "fontSize": 12,
-                },
-              ]
-            }
-          >
-            Feb1,2011
-          </Text>
-        </View>
+          Feb1,2011
+        </Text>
       </View>
     </View>
   </View>

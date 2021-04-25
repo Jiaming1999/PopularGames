@@ -9,7 +9,7 @@ describe('To Article', () => {
   /**
    * Button navigation for popular tab
    */
-  it('navigates on button press', () => {
+  it('navigates on button press', async () => {
     const component = (
       <NavigationContainer>
         <TabOneNavigator />
@@ -17,8 +17,9 @@ describe('To Article', () => {
     );
 
     const { findByText } = render(component);
-    fireEvent.press(findByText('game'));
-    const newHeader = findByText('Article');
+    const onClick = await findByText('game');
+    fireEvent(onClick, 'press');
+    const newHeader = await findByText('Article');
 
     expect(newHeader).toBeTruthy();
   });
