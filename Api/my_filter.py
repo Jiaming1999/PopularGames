@@ -42,7 +42,10 @@ def get_most_genre(doc):
     genre_dict = {}
     for obj in doc:
         genre_list = obj['genres']
+
         for genre in genre_list:
+            if '+' in genre:
+                genre = genre.split('+')[0]
             if genre in genre_dict:
                 genre_dict[genre] += 1
             else:
@@ -114,6 +117,8 @@ def get_least_platform(doc):
     for obj in doc:
         platform_list = obj['platforms']
         for platform in platform_list:
+            if '+' in platform:
+                platform = platform.split('+')[0]
             if platform in platform_dict:
                 platform_dict[platform] += 1
             else:

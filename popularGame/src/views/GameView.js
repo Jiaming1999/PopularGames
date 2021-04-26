@@ -64,14 +64,14 @@ const styles = StyleSheet.create({
  * Card component for displaying game information
  * game: information for a single game from popular or top100 collection
  */
-const GameInfo = (props) => {
+export const GameInfo = (props) => {
   const { game, navigation } = props;
 
   const Score = () => {
     const items = [];
     const num = game.score === 'N/A' ? 0 : Math.ceil(game.score);
     for (let i = 0; i < num; i += 1) {
-      items.push(<EvilIcons name="star" size={20} color="black" />);
+      items.push(<EvilIcons key={i} name="star" size={20} color="black" />);
     }
     return (
       <View style={styles.row}>

@@ -130,6 +130,24 @@ function TabTwoNavigator() {
           },
         }}
       />
+      <TabTwoStack.Screen
+        name='Article'
+        component={ReviewPage}
+        options={{
+          headerTitle: 'Article',
+          title: 'articles',
+          headerTintColor: 'white',
+          headerTitleStyle: {
+            color: 'white',
+            fontSize: 25,
+            fontWeight: 'bold',
+          },
+          headerStyle: {
+            backgroundColor: '#bf1313',
+            height: 100,
+          },
+        }}
+      />
     </TabTwoStack.Navigator>
   );
 }
