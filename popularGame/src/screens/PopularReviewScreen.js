@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 });
 
 /**
- * to do week2 review screen for popular games
+ * Screen Container component for popular game's filter result
  * @returns
  */
 const PopularReviewScreen = (props) => {

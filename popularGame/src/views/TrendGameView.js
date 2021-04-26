@@ -54,23 +54,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const Result = (props) => {
-  const { children } = props;
-  return (
-    <View className={styles.container}>
-      <Text>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-Result.propTypes = {
-  children: PropTypes.string.isRequired,
-};
-
 /**
  * Game view display for a trend game review page
+ * Support check games/genres/platform for most like and least like
  * @returns
  */
 const TrendGameView = (props) => {
