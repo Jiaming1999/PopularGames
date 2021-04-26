@@ -81,7 +81,7 @@ const TopReviewScreen = (props) => {
       fetchGameList();
     }
     setLoading(false);
-  }, [type, gameData]);
+  }, [type]);
 
   return (
     <View style={styles.container}>
