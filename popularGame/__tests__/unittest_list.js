@@ -1,6 +1,6 @@
 import api from '../src/util/api';
 import {
-  POPULAR_DATA, TOP_DATA, COMPARE_POPULAR_DATA, COMPARE_TOP_DATA,
+  POPULAR_DATA, TOP_DATA,
 } from '../mockData';
 import { parseGames } from '../src/modal/GamesModal';
 
@@ -22,7 +22,7 @@ test('returns result for mock popular game', () => {
     .finally(() => {
       expect(onResponse).toHaveBeenCalled();
       expect(onError).not.toHaveBeenCalled();
-      expect(onResponse.mock.calls[0][0][0]).toEqual(COMPARE_POPULAR_DATA);
+      expect(onResponse.mock.calls[0][0][0]).toEqual(POPULAR_DATA);
     });
 });
 
@@ -40,7 +40,7 @@ test('returns result for mock top100 game', () => {
     .finally(() => {
       expect(onResponse).toHaveBeenCalled();
       expect(onError).not.toHaveBeenCalled();
-      expect(onResponse.mock.calls[0][0][0]).toEqual(COMPARE_TOP_DATA);
+      expect(onResponse.mock.calls[0][0][0]).toEqual(TOP_DATA);
     });
 });
 
@@ -105,6 +105,6 @@ test('empty profile parsing', () => {
 test('ordinary parsing top data', () => {
   const data = parseGames([TOP_DATA]);
   expect(data).toEqual([
-    COMPARE_TOP_DATA,
+    TOP_DATA,
   ]);
 });

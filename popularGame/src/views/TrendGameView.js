@@ -4,6 +4,7 @@ import {
   StyleSheet, ScrollView, Button,
 } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { View, Text } from '../components/Themed.tsx';
 import { GameInfo } from './GameView';
 
@@ -55,6 +56,27 @@ const styles = StyleSheet.create({
 });
 
 /**
+ * Display the result from filter
+ * @param {object} data information about filter's result
+ * @returns
+ */
+export const Result = ({ data }) => (
+  <View style={styles.row}>
+    <FontAwesome5 name="medal" size={24} color="black" />
+    <Text style={styles.title}>
+      {data ? data.response : 'Click to see result'}
+    </Text>
+    <FontAwesome5 name="medal" size={24} color="black" />
+  </View>
+);
+
+Result.propTypes = {
+  data: PropTypes.shape({
+    response: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+/**
  * Game view display for a trend game review page
  * Support check games/genres/platform for most like and least like
  * @param {function} setType set the type of which filtering used
@@ -85,9 +107,7 @@ const TrendGameView = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>
-        {data ? data.response : 'Click to see result'}
-      </Text>
+      <Result data={data} />
       <View style={styles.row}>
         <Button
           style={styles.btn}

@@ -118,7 +118,7 @@ function TabTwoNavigator() {
         name="TabTwoScreen"
         component={TabTwoScreen}
         options={{
-          headerTitle: 'Popular Reviews',
+          headerTitle: 'Popular Trend',
           headerTitleStyle: {
             color: 'white',
             fontSize: 25,
@@ -204,7 +204,25 @@ function TabFourNavigator() {
         name="TabFourScreen"
         component={TabFourScreen}
         options={{
-          headerTitle: 'Top100 Games',
+          headerTitle: 'Top100 Trend',
+          headerTitleStyle: {
+            color: 'white',
+            fontSize: 25,
+            fontWeight: 'bold',
+          },
+          headerStyle: {
+            backgroundColor: '#bf1313',
+            height: 100,
+          },
+        }}
+      />
+      <TabFourStack.Screen
+        name='Article'
+        component={ReviewPage}
+        options={{
+          headerTitle: 'Article',
+          title: 'articles',
+          headerTintColor: 'white',
           headerTitleStyle: {
             color: 'white',
             fontSize: 25,

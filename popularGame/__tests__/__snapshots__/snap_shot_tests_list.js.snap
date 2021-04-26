@@ -185,6 +185,7 @@ exports[`returns result for mock popular game 1`] = `
           "width": "98%",
         }
       }
+      testID="navigate"
     >
       <Image
         source={
@@ -353,6 +354,7 @@ exports[`returns result for mock top100 game 1`] = `
           "width": "98%",
         }
       }
+      testID="navigate"
     >
       <Image
         source={

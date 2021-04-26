@@ -84,6 +84,7 @@ export const GameInfo = (props) => {
     <TouchableOpacity
       title="gamecard"
       style={styles.card}
+      testID="navigate"
       onPress={() => navigation.navigate('Article', game)}
     >
       <Image
