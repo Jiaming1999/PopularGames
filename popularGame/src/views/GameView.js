@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
 
 /**
  * Card component for displaying game information
- * game: information for a single game from popular or top100 collection
+ * @param {object} game: information for a single game from popular or top100 collection
  */
 export const GameInfo = (props) => {
   const { game, navigation } = props;
@@ -145,9 +145,8 @@ GameInfo.propTypes = {
 
 /**
  * display component for game list
- * @param {Filter box} Filter
- * @param {*} data
- * @param {*} navigation
+ * @param {array of game} data list contains all game data
+ * @param {function} navigation navigation in corresponding screen stack
  * @returns
  */
 export const GameList = (props) => {
@@ -172,8 +171,9 @@ GameList.propTypes = {
 
 /**
  * Componet rendering a tab page of game information list
- * data: list of game information
- * setLimit: the number of game displayed
+ * @param {array of game} data: list of game information
+ * @param {function} setLimit: the number of game displayed
+ * @param {react component} Filter: the sub component display filtering parts
  */
 const GameView = (props) => {
   const { data, setLimit, navigation } = props;

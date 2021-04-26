@@ -57,6 +57,9 @@ const styles = StyleSheet.create({
 /**
  * Game view display for a trend game review page
  * Support check games/genres/platform for most like and least like
+ * @param {function} setType set the type of which filtering used
+ * @param {object} data response from filtering
+ * @param {array of games} gameData games satisfied the filtering
  * @returns
  */
 const TrendGameView = (props) => {
