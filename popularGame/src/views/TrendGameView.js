@@ -6,7 +6,6 @@ import {
 import { PropTypes } from 'prop-types';
 import { View, Text } from '../components/Themed.tsx';
 import { GameInfo } from './GameView';
-import LoadingView from './LoadingView';
 
 const styles = StyleSheet.create({
   container: {
@@ -76,7 +75,7 @@ Result.propTypes = {
  */
 const TrendGameView = (props) => {
   const {
-    setType, data, gameData, navigation, loading,
+    setType, data, gameData, navigation,
   } = props;
 
   const handlePressGenreMost = () => {
@@ -94,9 +93,6 @@ const TrendGameView = (props) => {
   const handlePressPlatfromLeast = () => {
     setType('leastplatform');
   };
-  if (loading) {
-    return (<LoadingView />);
-  }
 
   return (
     <View style={styles.container}>
@@ -148,7 +144,6 @@ TrendGameView.propTypes = {
   gameData: PropTypes.shape({
     map: PropTypes.func.isRequired,
   }).isRequired,
-  loading: PropTypes.bool.isRequired,
 };
 
 export default TrendGameView;

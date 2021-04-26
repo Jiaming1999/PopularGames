@@ -33,7 +33,6 @@ const PopularReviewScreen = (props) => {
   const [type, setType] = useState();
   const [data, setData] = useState();
   const [gameData, setGameData] = useState();
-  const [loading, setLoading] = useState(false);
 
   async function fetchFilter(typeFilter) {
     if (!typeFilter) {
@@ -76,12 +75,8 @@ const PopularReviewScreen = (props) => {
   }, [type]);
 
   useEffect(() => {
-    if (data) {
-      setLoading(true);
-      fetchGameList();
-    }
-    setLoading(false);
-  }, [type, gameData]);
+    fetchGameList();
+  }, [data]);
 
   return (
     <View style={styles.container}>
@@ -90,7 +85,6 @@ const PopularReviewScreen = (props) => {
         data={data}
         gameData={gameData}
         navigation={navigation}
-        loading={loading}
       />
     </View>
   );

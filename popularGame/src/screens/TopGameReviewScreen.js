@@ -33,13 +33,20 @@ const TopReviewScreen = (props) => {
   const [type, setType] = useState();
   const [data, setData] = useState();
   const [gameData, setGameData] = useState();
-  const [loading, setLoading] = useState(false);
 
-  async function fetchFilter(typeFilter) {
-    if (!typeFilter) {
-      throw new Error('no filter');
+  async function fetchGameList() {
+    let retData;
+    if (type.includes('genre')) {
+      retData = await getGameByAttr('top100', 'genre', data.response);
+    } else {
+      retData = await getGameByAttr('top100', 'platform', data.response);
     }
-    const url = `${BASE_URL}filter/top100?type=${typeFilter}`;
+    setGameData(retData);
+    return retData;
+  }
+
+  async function fetchFilter() {
+    const url = `${BASE_URL}filter/top100?type=${type}`;
     try {
       const response = await fetch(
         url,
@@ -58,30 +65,17 @@ const TopReviewScreen = (props) => {
     }
   }
 
-  async function fetchGameList() {
-    let retData;
-    if (type.includes('genre')) {
-      retData = await getGameByAttr('top100', 'genre', data.response);
-    } else {
-      retData = await getGameByAttr('top100', 'platform', data.response);
-    }
-    setGameData(retData);
-    return retData;
-  }
-
   useEffect(() => {
     if (type) {
-      fetchFilter(type);
+      fetchFilter();
     }
   }, [type]);
 
   useEffect(() => {
     if (data) {
-      setLoading(true);
       fetchGameList();
     }
-    setLoading(false);
-  }, [type]);
+  }, [data]);
 
   return (
     <View style={styles.container}>
@@ -90,7 +84,6 @@ const TopReviewScreen = (props) => {
         data={data}
         gameData={gameData}
         navigation={navigation}
-        loading={loading}
       />
     </View>
   );
