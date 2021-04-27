@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import {
-  StyleSheet, ScrollView, TextInput, Button, TouchableOpacity, Image,
+  StyleSheet, ScrollView, TextInput, Button, Image, Pressable,
 } from 'react-native';
 import { PropTypes } from 'prop-types';
 import {
@@ -81,7 +81,7 @@ export const GameInfo = (props) => {
   };
 
   return (
-    <TouchableOpacity
+    <Pressable
       title="gamecard"
       style={styles.card}
       testID="navigate"
@@ -127,7 +127,7 @@ export const GameInfo = (props) => {
           }
         </Text>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
