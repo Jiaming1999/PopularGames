@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`returns result for mock popular game 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+      },
+      Object {
+        "flexDirection": "row",
+        "padding": 5,
+      },
+    ]
+  }
+>
+  <Text />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#000",
+        },
+        Object {
+          "fontSize": 18,
+          "fontWeight": "bold",
+          "paddingTop": 10,
+        },
+      ]
+    }
+  >
+    FPS
+  </Text>
+  <Text />
+</View>
+`;
+
+exports[`returns result for mock popular game 2`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+      },
+      Object {
+        "flexDirection": "row",
+        "padding": 5,
+      },
+    ]
+  }
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": "black",
+          "fontSize": 24,
+        },
+        undefined,
+        Object {
+          "fontFamily": "FontAwesome5Free-Solid",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {
+          "fontWeight": "700",
+        },
+      ]
+    }
+  >
+    
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#000",
+        },
+        Object {
+          "fontSize": 18,
+          "fontWeight": "bold",
+          "paddingTop": 10,
+        },
+      ]
+    }
+  >
+    PlayStation4
+  </Text>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": "black",
+          "fontSize": 24,
+        },
+        undefined,
+        Object {
+          "fontFamily": "FontAwesome5Free-Solid",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {
+          "fontWeight": "700",
+        },
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;
+
+exports[`returns result for mock popular game 3`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+      },
+      Object {
+        "flexDirection": "row",
+        "padding": 5,
+      },
+    ]
+  }
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": "black",
+          "fontSize": 24,
+        },
+        undefined,
+        Object {
+          "fontFamily": "FontAwesome5Free-Solid",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {
+          "fontWeight": "700",
+        },
+      ]
+    }
+  >
+    
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#000",
+        },
+        Object {
+          "fontSize": 18,
+          "fontWeight": "bold",
+          "paddingTop": 10,
+        },
+      ]
+    }
+  >
+    RPG
+  </Text>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": "black",
+          "fontSize": 24,
+        },
+        undefined,
+        Object {
+          "fontFamily": "FontAwesome5Free-Solid",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {
+          "fontWeight": "700",
+        },
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;
+
+exports[`returns result for mock popular game 4`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+      },
+      Object {
+        "flexDirection": "row",
+        "padding": 5,
+      },
+    ]
+  }
+>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": "black",
+          "fontSize": 24,
+        },
+        undefined,
+        Object {
+          "fontFamily": "FontAwesome5Free-Solid",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {
+          "fontWeight": "700",
+        },
+      ]
+    }
+  >
+    
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#000",
+        },
+        Object {
+          "fontSize": 18,
+          "fontWeight": "bold",
+          "paddingTop": 10,
+        },
+      ]
+    }
+  >
+    XBOX360
+  </Text>
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": "black",
+          "fontSize": 24,
+        },
+        undefined,
+        Object {
+          "fontFamily": "FontAwesome5Free-Solid",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {
+          "fontWeight": "700",
+        },
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;

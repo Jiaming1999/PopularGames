@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
 /**
  * Review article for the game
  * @param {data} props
+ * @param {object} data one game information
  * @returns
  */
 export const ReviewContent = (props) => {
@@ -76,6 +77,7 @@ ReviewContent.propTypes = {
 
 /**
  * Component display correpsond game's review article
+ * @ignore route: hidden props
  */
 const ReviewView = (props) => {
   const { route } = props;

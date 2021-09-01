@@ -1,0 +1,757 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loading for popular game 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+        "width": "100%",
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#efefef",
+          "borderRadius": 3,
+          "height": 40,
+          "width": 40,
+        },
+        Object {
+          "marginRight": 12,
+        },
+        Object {
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#dfdfdf",
+          "height": "100%",
+          "opacity": 0.5,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#efefef",
+            "borderRadius": 3,
+            "height": 12,
+            "marginBottom": 12,
+            "width": "80%",
+          },
+          undefined,
+          Object {
+            "overflow": "hidden",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#dfdfdf",
+            "height": "100%",
+            "opacity": 0.5,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#efefef",
+            "borderRadius": 3,
+            "height": 12,
+            "marginBottom": 12,
+            "width": "100%",
+          },
+          undefined,
+          Object {
+            "overflow": "hidden",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#dfdfdf",
+            "height": "100%",
+            "opacity": 0.5,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#efefef",
+            "borderRadius": 3,
+            "height": 12,
+            "marginBottom": 12,
+            "width": "30%",
+          },
+          undefined,
+          Object {
+            "overflow": "hidden",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#dfdfdf",
+            "height": "100%",
+            "opacity": 0.5,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#efefef",
+          "borderRadius": 3,
+          "height": 40,
+          "width": 40,
+        },
+        Object {
+          "marginLeft": 12,
+        },
+        Object {
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#dfdfdf",
+          "height": "100%",
+          "opacity": 0.5,
+        }
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`returns result for mock popular game 1`] = `
+<RCTScrollView>
+  <View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "borderColor": "#eee",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexShrink": 1,
+          "margin": 5,
+          "opacity": 1,
+          "padding": 5,
+          "width": "98%",
+        }
+      }
+      testID="navigate"
+    >
+      <Image
+        source={
+          Object {
+            "uri": "www.google.com",
+          }
+        }
+        style={
+          Object {
+            "height": 200,
+            "width": "90%",
+          }
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#fff",
+            },
+            undefined,
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 18,
+                "fontWeight": "bold",
+                "paddingTop": 10,
+              },
+            ]
+          }
+        >
+          Mock game title
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#fff",
+                },
+                Object {
+                  "flexDirection": "row",
+                  "padding": 5,
+                },
+              ]
+            }
+          >
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+            <Text />
+          </View>
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <Text />
+          Edited By jmz
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <Text />
+          FPS
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <Text />
+          On undefined
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <Text />
+          Feb1,2011
+        </Text>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;
+
+exports[`returns result for mock top100 game 1`] = `
+<RCTScrollView>
+  <View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "borderColor": "#eee",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "flexShrink": 1,
+          "margin": 5,
+          "opacity": 1,
+          "padding": 5,
+          "width": "98%",
+        }
+      }
+      testID="navigate"
+    >
+      <Image
+        source={
+          Object {
+            "uri": "www.google.com",
+          }
+        }
+        style={
+          Object {
+            "height": 200,
+            "width": "90%",
+          }
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#fff",
+            },
+            undefined,
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 18,
+                "fontWeight": "bold",
+                "paddingTop": 10,
+              },
+            ]
+          }
+        >
+          Mock game title
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#fff",
+                },
+                Object {
+                  "flexDirection": "row",
+                  "padding": 5,
+                },
+              ]
+            }
+          >
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 20,
+                  },
+                  undefined,
+                  Object {
+                    "fontFamily": "evilicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 20,
+                  },
+                  undefined,
+                  Object {
+                    "fontFamily": "evilicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 20,
+                  },
+                  undefined,
+                  Object {
+                    "fontFamily": "evilicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 20,
+                  },
+                  undefined,
+                  Object {
+                    "fontFamily": "evilicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 20,
+                  },
+                  undefined,
+                  Object {
+                    "fontFamily": "evilicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "black",
+                    "fontSize": 20,
+                  },
+                  undefined,
+                  Object {
+                    "fontFamily": "evilicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+          </View>
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": "black",
+                  "fontSize": 24,
+                },
+                undefined,
+                Object {
+                  "fontFamily": "material-community",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            󰼭
+          </Text>
+          Edited By jmz
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": "black",
+                  "fontSize": 24,
+                },
+                undefined,
+                Object {
+                  "fontFamily": "material",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+          Action
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": "black",
+                  "fontSize": 24,
+                },
+                undefined,
+                Object {
+                  "fontFamily": "material",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+          On undefined
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#000",
+              },
+              Object {
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": "black",
+                  "fontSize": 24,
+                },
+                undefined,
+                Object {
+                  "fontFamily": "anticon",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+          Feb1,2011
+        </Text>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;
+
+exports[`throws an error for top game 1`] = `
+<RCTScrollView
+  collapsable={false}
+  onGestureHandlerEvent={[Function]}
+  onGestureHandlerStateChange={[Function]}
+>
+  <View>
+    <Image
+      source={
+        Object {
+          "uri": "www.youtube.com",
+        }
+      }
+      style={
+        Object {
+          "height": 300,
+          "width": "100%",
+        }
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000",
+          },
+          Object {
+            "fontSize": 30,
+            "fontWeight": "bold",
+            "padding": 5,
+          },
+        ]
+      }
+    >
+      Mock Review
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000",
+          },
+          Object {
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "marginLeft": 10,
+            "marginTop": 5,
+          },
+        ]
+      }
+    >
+      By koshima
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000",
+          },
+          Object {
+            "margin": 5,
+            "padding": 5,
+          },
+        ]
+      }
+    >
+      top tier game
+    </Text>
+  </View>
+</RCTScrollView>
+`;

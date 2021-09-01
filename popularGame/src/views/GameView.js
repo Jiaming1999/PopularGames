@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import {
-  StyleSheet, ScrollView, TextInput, Button, TouchableOpacity, Image,
+  StyleSheet, ScrollView, TextInput, Button, Image, Pressable,
 } from 'react-native';
 import { PropTypes } from 'prop-types';
 import {
@@ -62,16 +62,16 @@ const styles = StyleSheet.create({
 
 /**
  * Card component for displaying game information
- * game: information for a single game from popular or top100 collection
+ * @param {object} game: information for a single game from popular or top100 collection
  */
-const GameInfo = (props) => {
+export const GameInfo = (props) => {
   const { game, navigation } = props;
 
   const Score = () => {
     const items = [];
     const num = game.score === 'N/A' ? 0 : Math.ceil(game.score);
     for (let i = 0; i < num; i += 1) {
-      items.push(<EvilIcons name="star" size={20} color="black" />);
+      items.push(<EvilIcons key={i} name="star" size={20} color="black" />);
     }
     return (
       <View style={styles.row}>
@@ -81,9 +81,10 @@ const GameInfo = (props) => {
   };
 
   return (
-    <TouchableOpacity
+    <Pressable
       title="gamecard"
       style={styles.card}
+      testID="navigate"
       onPress={() => navigation.navigate('Article', game)}
     >
       <Image
@@ -126,7 +127,7 @@ const GameInfo = (props) => {
           }
         </Text>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
@@ -145,9 +146,8 @@ GameInfo.propTypes = {
 
 /**
  * display component for game list
- * @param {Filter box} Filter
- * @param {*} data
- * @param {*} navigation
+ * @param {array of game} data list contains all game data
+ * @param {function} navigation navigation in corresponding screen stack
  * @returns
  */
 export const GameList = (props) => {
@@ -172,8 +172,9 @@ GameList.propTypes = {
 
 /**
  * Componet rendering a tab page of game information list
- * data: list of game information
- * setLimit: the number of game displayed
+ * @param {array of game} data: list of game information
+ * @param {function} setLimit: the number of game displayed
+ * @param {react component} Filter: the sub component display filtering parts
  */
 const GameView = (props) => {
   const { data, setLimit, navigation } = props;

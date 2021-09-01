@@ -73,3 +73,22 @@ Navigate to review article is possible
 
 #### Review:
 The page display one game detailed review article.
+
+### Week4 Final finishing stage!
+Finishing my original planned Mobile App Interface
+
+This week is the implementation of interface for getting the most/least popular genre and platform for people to understand the trend for recent games and top100 games of all time.
+
+#### Popular Trend:
+Now you can see what is the most/least favorable choice for genre and platform developers want to develop. By these data you can easily set a goal for what next game should be.
+
+#### Top100 Trend:
+Want to make your game more standing out to everybody else? Want your game to be remembered for a long time? Check this page out and see the result of the most favorable genre and platform those most classic game possessed.
+
+### Test:
+Snapshot Test for screens componnet
+
+Unit Test for parsing helper
+
+Navigation Test between screens
+

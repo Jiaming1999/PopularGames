@@ -18,7 +18,7 @@ def home():
 
 
 @app.route('/popular', methods=['GET'])
-def get_popular_game_by_attr():
+def get_popular_game_by_limit():
     """
     get popular game by attribute
     """
@@ -36,8 +36,31 @@ def get_popular_game_by_attr():
     return jsonify(ret_sanitized[:info_limit]), 201
 
 
+@app.route('/popular/rank', methods=['GET'])
+def get_popular_game_by_attr():
+    """
+    get popular game by genre/platform
+    """
+    dbh = db_helper.DbHelper()
+    genre_category = request.args.get("genre")
+    platform_category = request.args.get("platform")
+    ret = []
+    docs_game = dbh.fetch_popular_game()
+    ret_sanitized = json.loads(json_util.dumps(docs_game))
+
+    if genre_category:
+        for obj in ret_sanitized:
+            if genre_category in obj["genres"]:
+                ret.append(obj)
+    elif platform_category:
+        for obj in ret_sanitized:
+            if platform_category in obj["platforms"]:
+                ret.append(obj)
+    return jsonify(ret),201
+
+
 @app.route('/top100', methods=['GET'])
-def get_top_game_by_attr():
+def get_top_game_by_limit():
     """
     get top game by attribute
     @return response
@@ -54,6 +77,29 @@ def get_top_game_by_attr():
     except TypeError:
         abort(400, "Bad Request: invalid limit")
     return jsonify(ret_sanitized[:info_limit]), 201
+
+
+@app.route('/top100/rank', methods=['GET'])
+def get_top_game_by_attr():
+    """
+    get top100 game by genre/platform
+    """
+    dbh = db_helper.DbHelper()
+    genre_category = request.args.get("genre")
+    platform_category = request.args.get("platform")
+    ret = []
+    docs_game = dbh.fetch_top_game()
+    ret_sanitized = json.loads(json_util.dumps(docs_game))
+
+    if genre_category:
+        for obj in ret_sanitized:
+            if genre_category in obj["genres"]:
+                ret.append(obj)
+    elif platform_category:
+        for obj in ret_sanitized:
+            if platform_category in obj["platforms"]:
+                ret.append(obj)
+    return jsonify(ret),201
 
 
 def execute_update_body(game_id, data, dbh, u_type):

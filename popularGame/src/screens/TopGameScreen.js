@@ -28,7 +28,12 @@ const styles = StyleSheet.create({
  * @returns
  */
 const TopGameScreen = (props) => {
+  /**
+   * A prop that should not be visible in the documentation.
+   * @ignore
+   */
   const { navigation } = props;
+
   const [data, setData] = useState();
   const [limit, setLimit] = useState(100);
   const [error, setError] = useState();
